@@ -1,5 +1,5 @@
 // var UserFactory = require('../services/userFactory');
-// var WorkshopFactory = require('../services/workshopFactory');
+var AccountFactory = require('../services/accountFactory');
 
 module.exports = function(app) {
 	
@@ -8,6 +8,22 @@ module.exports = function(app) {
 	// register.post(function(req, res) {
 	// 	UserFactory.register(req.body, res);	
 	// });
+
+	var api = app.route('/api');
+	api.get(function(req, res){
+
+		var newAccount = {
+			firstName: "Davy",
+			lastName: "Engone",
+			email: "davy@philos.io",
+			type: 'user'
+		};
+		
+		AccountFactory.create(newAccount, function(user){
+			console.log(user);
+			res.json(user);
+		});
+	});
 
 	// // Signup route
 	// var signup = app.route('/signup');

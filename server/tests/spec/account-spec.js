@@ -23,12 +23,14 @@ describe('Account', function() {
 			type: 'user'
 		};
 		
-		AccountFactory.create(newAccount);
-		expect(account.firstName).toBe('Davy');
-		expect(account.lastName).toBe('Engone');
-		expect(account.email).toBe('davy@philos.io');
-		expect(account._id).toBeDefined();
-		done();
+		AccountFactory.create(newAccount, function(account){
+			expect(account.firstName).toBe('Davy');
+			expect(account.lastName).toBe('Engone');
+			expect(account.email).toBe('davy@philos.io');
+			expect(account._id).toBeDefined();
+			done();
+		});
+		
 	});
 
 	xit('Update account by id', function() {
