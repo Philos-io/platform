@@ -28,10 +28,8 @@ var create = {
 			user.email = info.email;
 
 			user.save(function(err){
-
-				if (err) {throw err};
-
-				return done(user);
+				if (err) {throw err}
+				console.log("inside save");				
 			});
 		});
 	},

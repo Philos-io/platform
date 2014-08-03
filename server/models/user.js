@@ -15,8 +15,7 @@ var userSchema = mongoose.Schema({
 		required: true
 	},
 	password: {
-		type: String,
-		required: true
+		type: String
 	},
 	tags: { type: [String], index: true }
 });
