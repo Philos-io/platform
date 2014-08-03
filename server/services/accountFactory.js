@@ -20,16 +20,15 @@ var create = {
 			// if (user) {
 			// 	throw 'User already existed';
 			// }
-
 			var user = new User();
 
 			user.firstName = info.firstName;
 			user.lastName = info.lastName;
 			user.email = info.email;
 
-			user.save(function(err){
-				if (err) {throw err}
-				console.log("inside save");				
+			user.save(function(err){			
+				if (err) {console.log(err)}
+				done(user);
 			});
 		});
 	},
@@ -42,8 +41,8 @@ var create = {
 /*
 * 
 */
-var createAccount = function(accountInfo){
-	var info = create[accountInfo.type](accountInfo);
+var createAccount = function(accountInfo, callback){
+	var info = create[accountInfo.type](accountInfo, callback);
 
 	return info;
 };
