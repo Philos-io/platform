@@ -3,8 +3,10 @@ var User = require('../models/user'),
 /*
 * 
 */
-var getAccount = function(id){
-
+var getAccount = function(id, done){
+	User.findById(id, function(err, account){
+		done(account);
+	});
 };
 
 /*
@@ -13,13 +15,14 @@ var getAccount = function(id){
 var create = {
 	user: function(info, done){
 		User.findOne({email: info.email}, function(err, user){
-			if (err) {
-				throw err;
-			}
-
-			// if (user) {
-			// 	throw 'User already existed';
+			// if (err) {
+			// 	throw err;
 			// }
+
+			if (user) {
+				done(user);
+			}
+			
 			var user = new User();
 
 			user.firstName = info.firstName;
@@ -42,9 +45,7 @@ var create = {
 * 
 */
 var createAccount = function(accountInfo, callback){
-	var info = create[accountInfo.type](accountInfo, callback);
-
-	return info;
+	create[accountInfo.type](accountInfo, callback);
 };
 
 /*
@@ -57,8 +58,11 @@ var updateAccount = function(){
 /*
 * 
 */
-var deleteAccount = function(){
-
+var deleteAccount = function(id, done){
+	User.findByIdAndRemove(id, function(err, result){
+		if(err) throw err;
+		done();
+	});
 };
 
 module.exports = {
