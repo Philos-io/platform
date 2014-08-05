@@ -15,5 +15,13 @@ angular
     .when('/login', {
       controller: 'LoginController',
       templateUrl: 'views/login.html'
+    })
+    .when('/register', {
+      controller: 'RegisterController',
+      templateUrl: 'views/register.html'
+    })
+    .when('/workshops', {
+      controller: 'WorkshopsController',
+      templateUrl: 'views/workshops.html'
     });
   });
