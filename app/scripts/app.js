@@ -13,7 +13,7 @@ angular
   		templateUrl: 'views/about.html'
   	})
     .when('/login', {
-      controller: 'MainController',
+      controller: 'LoginController',
       templateUrl: 'views/login.html'
     });
   });
