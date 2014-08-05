@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('philosAngularApp', ['ngRoute'])
+  .module('philosAngularApp', ['ngRoute', 'ngAnimate'])
   .config(function($routeProvider){
   	$routeProvider
   	.when('/', {
@@ -11,5 +11,9 @@ angular
   	.when('/about', {
   		controller: 'MainController',
   		templateUrl: 'views/about.html'
-  	});
+  	})
+    .when('/login', {
+      controller: 'MainController',
+      templateUrl: 'views/login.html'
+    });
   });
