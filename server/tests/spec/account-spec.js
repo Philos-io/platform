@@ -20,7 +20,7 @@ describe('Account', function() {
 			email: "davy@philos.io",
 			type: 'user'
 		};
-		
+
 		
 		AccountFactory.create(newAccount, function(account){
 			expect(account.firstName).toBe('Davy');
@@ -32,8 +32,20 @@ describe('Account', function() {
 		});
 	});
 
-	xit('Update account by id', function() {
-		user = AccountFactory.get(id);
+	it('Update account by id', function(done) {
+		console.log(id);
+		AccountFactory.get(id, function(account){
+			account.firstName = "Davy Sydney";
+			account.lastName = "Engone Nze";
+
+			AccountFactory.update(account, function(result) {
+				console.log(result);
+				expect(result.firstName).toBe('Davy Sydney');
+				expect(result.lastName).toBe('Engone Nze');
+				expect(result.email).toBe('davy@philos.io');
+				done();
+			});
+		});
 	});
 
 	xit('Delete account by id', function() {
@@ -41,7 +53,7 @@ describe('Account', function() {
 		// Query the db to check if the user has been deleted
 	});
 
-	it('Get an account by id', function(done) {
+	xit('Get an account by id', function(done) {
 		AccountFactory.get(id, function(account){
 			expect(account.firstName).toBe('Davy');
 			expect(account.lastName).toBe('Engone');

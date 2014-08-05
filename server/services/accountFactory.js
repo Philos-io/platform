@@ -22,7 +22,7 @@ var create = {
 			if (user) {
 				done(user);
 			}
-			
+
 			var user = new User();
 
 			user.firstName = info.firstName;
@@ -51,8 +51,17 @@ var createAccount = function(accountInfo, callback){
 /*
 * 
 */
-var updateAccount = function(){
+var updateAccount = function(info, done){
+	console.log(Account.findOne, info);
 
+	Account.findOne({ _id: info._id}, function (err, account) {
+		if (err) done(err);
+
+		account = info;
+		account.save(function(err){
+			done(account);
+		});
+	});
 };
 
 /*
