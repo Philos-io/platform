@@ -13,6 +13,7 @@ if (env === 'development') {
 	console.log(config.port);
 	module.exports = app;	
 }else{
+	console.log(config.port);
 	app.listen(config.port);
 }
 
