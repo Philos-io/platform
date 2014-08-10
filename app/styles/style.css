@@ -1,0 +1,133 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background-color:#b32a0e;
+	font-family: 'Raleway', sans-serif;
+	font-size:12px;
+	height:auto;
+	width:100%;
+	transition:all ease-in 200ms;
+	position:relative;
+	z-index:0;
+}
+
+h1{
+	font-family: 'Droid Serif', serif;
+	font-size:60px;
+	font-style:italic;
+	font-weight:normal;
+	margin-bottom:50px;
+}
+
+.clear{
+	clear:both;
+}
+
+.left{
+	float:left;
+}
+
+.right{
+	float:right;
+}
+
+.center{
+	margin:auto;
+	text-align:center;
+}
+
+#head{
+	background-color:#FFF;
+	height:60px;
+	width:100%;
+	padding:10px 0;
+	position:fixed;
+	z-index:100;
+	top:0;
+}
+
+#head .logo a{
+	background-image:url(../images/logo_top.png);
+	height:60px;
+	width:224px;
+	display:block;
+	float:left;
+	margin-left:10px;
+	text-indent:-100%;
+}
+
+.button_stroke a{
+	width:auto;
+	display:block;
+	padding:11px 30px;
+	font-size:24px;
+	line-height:24px;
+	border:#00b36e 2px solid;
+	color:#00b36e;
+	text-decoration:none;
+	border-radius:30px;
+	margin: 5px 10px;
+	transition:all ease-in 200ms;
+	font-weight:600;
+}
+
+.button_stroke a:hover{
+	background-color:#27ffac;
+	border:#27ffac 2px solid;
+	color:#fff;
+}
+
+.button_light a{
+	background-color:#27ffac;
+	border:#27ffac 2px solid;
+	color:#00b36e;
+	display:block;
+	padding:11px 30px;
+	font-size:24px;
+	line-height:24px;
+	text-decoration:none;
+	border-radius:30px;
+	margin: 5px 10px;
+	transition:all ease-in 200ms;
+	font-weight:600;
+}
+
+.button_light a:hover{
+	background-color:transparent;
+	border:#fff 2px solid;
+	color:#fff;
+}
+
+#presentation{
+	background-color:#ff6141;
+	margin-top:80px;
+	height:100vh;
+	width:100%;
+	color:#FFF;
+	text-align:center;
+	font-size:24px;
+	font-weight:200;
+	position:relative;
+}
+
+#presentation_content{
+	width:620px;
+	height:400px;
+	position:absolute;
+	margin-top:-240px;
+	margin-left:-310px;
+	top:50%;
+	left:50%;
+}
+
+#training_list{
+	margin-top:80px;
+	height:100vh;
+	width:100%;
+	color:#FFF;
+	text-align:center;
+	font-size:24px;
+	font-weight:200;
+	position:relative;
+}

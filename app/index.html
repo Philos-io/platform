@@ -5,8 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
+    <title>Philos.io</title>
+    <meta name="description" content="Philos: One week, one project!">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/vendor.css -->
@@ -15,24 +15,29 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link href="styles/reset.css" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet">
     <!-- endbuild -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,700,600|Droid+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
   </head>
   <body ng-app="philosAngularApp" class="container">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experie  nce.</p>
     <![endif]-->
-    <div class="header">
-      <ul class="nav nav-pills pull-right">
-        <li class="active"><a ng-href="#/login">Get in</a></li>
-      </ul>
-      <h3 class="text-muted">
-        <img src="images/philos_logo.png" alt="">
-      </h3>
-    </div>
+    <header>
+      <div id="head">
+          <div class="logo"><a href="#">Philos.io</a></div>
+            <div class="button_stroke right"><a href="#/login">Get In</a></div>
+            <div class="clear"></div>
+        </div>
+    </header>
 
     <!-- Add your site or application content here -->
     <div ng-view class="{{ pageClass }}"></div>
+    
+    <!-- Add the footer here! -->
+    <footer>
+    </footer>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -43,6 +48,13 @@
 
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts/utils/scroll.js"></script>
+    <script>
+     $(function() {
+      $('html').smoothScroll(800);
+     });
     </script>
 
     <!--[if lt IE 9]>
