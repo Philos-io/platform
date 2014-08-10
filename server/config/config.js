@@ -32,5 +32,7 @@ module.exports = function(env){
 		auth: auth
 	};
 
-	return env === "development"? development : production;
+	//return env === "development"? development : production;
+
+	return production;
 }
