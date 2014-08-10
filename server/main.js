@@ -9,12 +9,12 @@ require('./config/express')(app, config);
 require('./config/mongoose')(config);
 require('./config/routes')(app);
 
-// if (env === 'development') {
-// 	console.log(config.port);
-// 	module.exports = app;	
-// }else{
-// 	app.listen(config.port);
-// }
+if (env === 'development') {
+	console.log(config.port);
+	module.exports = app;	
+}else{
+	app.listen(config.port);
+}
 
 
-app.listen(config.port);
+//app.listen(config.port);
