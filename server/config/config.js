@@ -24,7 +24,7 @@ module.exports = function(env){
 	};
 
 	var production = {
-		db: '',
+		db: 'mongodb://davyengone:getbetter@ds051848.mongolab.com:51848/philos',
 		port: process.env.PORT || 9000,
 		username: 'davyengone',
 		user: defaultUser,
