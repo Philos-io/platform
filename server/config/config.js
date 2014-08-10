@@ -19,7 +19,7 @@ module.exports = function(env){
 		port: process.env.PORT || 9000,
 		username: 'davyengone',
 		user: defaultUser,
-		defaultDirectory: '../../app',
+		defaultDirectory: '../../dist',
 		auth: auth
 	};
 
@@ -32,7 +32,5 @@ module.exports = function(env){
 		auth: auth
 	};
 
-	//return env === "development"? development : production;
-
-	return production;
+	return env === "development"? development : production;
 }

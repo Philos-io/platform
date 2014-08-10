@@ -10,7 +10,7 @@ module.exports = function(app, config){
 	app.use(logger('dev'));
     app.use(bodyParser());
     app.use(cookieParser());
-    app.use(session({secret: 'philos'}));
+    app.use(session({secret: 'philosiscomingverysoon'}));
     //app.use(passport.initialize());
     //app.use(passport.session());
     app.use(express.static(path.join(__dirname, config.defaultDirectory)));
