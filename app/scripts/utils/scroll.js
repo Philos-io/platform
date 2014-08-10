@@ -1,5 +1,5 @@
 /*! http://mths.be/smoothscroll v1.5.2 by @mathias */
-;(function(document, $) {
+(function(document, $) {
 
 	var $scrollElement = (function() {
 	    // Find out what to scroll (html or body)
