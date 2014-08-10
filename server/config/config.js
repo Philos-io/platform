@@ -19,7 +19,7 @@ module.exports = function(env){
 		port: process.env.PORT || 9000,
 		username: 'davyengone',
 		user: defaultUser,
-		defaultDirectory: '../../dist',
+		defaultDirectory: '../../app',
 		auth: auth
 	};
 
