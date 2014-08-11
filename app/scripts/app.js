@@ -1,27 +1,35 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular
-  .module('philosAngularApp', ['ngRoute', 'ngAnimate'])
-  .config(function($routeProvider){
-  	$routeProvider
-  	.when('/', {
-  		controller: 'MainController',
-  		templateUrl: 'views/main.html'
-  	})
-  	.when('/about', {
-  		controller: 'MainController',
-  		templateUrl: 'views/about.html'
-  	})
-    .when('/login', {
-      controller: 'LoginController',
-      templateUrl: 'views/login.html'
+  function MainController($scope) {
+
+  }
+
+  function configuration($urlRouterProvider, $routeProvider){
+    $routeProvider
+    .when('/', {
+      controller: 'MainController',
+      templateUrl: 'views/main.html'
     })
-    .when('/register', {
-      controller: 'RegisterController',
-      templateUrl: 'views/register.html'
+    .when('/about', {
+      controller: 'MainController',
+      templateUrl: 'views/about.html'
     })
-    .when('/workshops', {
-      controller: 'WorkshopsController',
-      templateUrl: 'views/workshops.html'
-    });
-  });
+    
+    .otherwise({redirectTo : '/'});
+  }
+
+  angular
+    .module('philosAngularApp', [
+      'ngRoute',
+      'ui.router',
+      'login'
+      ])
+    .config(['$urlRouterProvider', '$routeProvider', configuration])
+    .controller('MainController', ['$scope', MainController]);
+
+})();
+
+
+
+  
