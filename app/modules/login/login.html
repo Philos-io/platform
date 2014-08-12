@@ -1,0 +1,22 @@
+<div class="row" style="position:absolute; top: 200px; left: 30%">
+	<div class="login">
+		<div class="col-sm-3 col-md-3  socialLogin">
+			<button type="button" class="btn btn-default btn-lg btn-block">Sign in with Github</button>
+			<button type="button" class="btn btn-info btn-lg btn-block">Sign in with Twitter</button>
+			<button type="button" class="btn btn-primary btn-lg btn-block">Sign in with LinkedIn</button>
+		</div>
+	</div>
+	
+	<form name="loginForm" ng-submit="login.submit(credentials)" novalidate>
+	  <label for="username">Email:</label>
+	  <input type="email" id="email"
+	         ng-model="login.email">
+	  <label for="password">Password:</label>
+	  <input type="password" id="password"
+	         ng-model="login.password">
+	  <button type="submit">Login</button>
+	</form>
+
+</div>
+
+
