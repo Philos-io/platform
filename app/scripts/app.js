@@ -1,15 +1,20 @@
 (function() {
   'use strict';
 
-  function MainController($scope) {
-
+  function MainController(CurrentUser) {
+    console.log(CurrentUser);
+    this.isAuth = function() {
+      console.log('test')
+      return true;
+    }
   }
 
   function configuration($routeProvider){
     $routeProvider
       .when('/', {
         controller: 'MainController',
-        templateUrl: 'views/main.html'
+        templateUrl: 'views/main.html',
+        controllerAs: 'main'
       })
       .otherwise({redirectTo : '/'});
   }
@@ -20,7 +25,7 @@
       'login'
       ])
     .config(['$routeProvider', configuration])
-    .controller('MainController', ['$scope', MainController]);
+    .controller('MainController', ['CurrentUser', MainController]);
 
 })();
 

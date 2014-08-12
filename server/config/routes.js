@@ -1,5 +1,6 @@
 // var UserFactory = require('../services/userFactory');
-var AccountFactory = require('../services/accountFactory');
+var AccountFactory  = require('../services/accountFactory');
+var AuthFactory 	= require('../services/authFactory');
 
 module.exports = function(app) {
 	
@@ -11,19 +12,14 @@ module.exports = function(app) {
 
 	var api = app.route('/api');
 	api.get(function(req, res){
-
-		var newAccount = {
-			firstName: "Davy",
-			lastName: "Engone",
-			email: "davy@philos.io",
-			type: 'user'
-		};
-		
 		AccountFactory.create(newAccount, function(user){
 			console.log(user);
 			res.json(user);
 		});
 	});
+
+	var login = app.route('/login');
+	login.post(AuthFactory.login);
 
 	// // Signup route
 	// var signup = app.route('/signup');

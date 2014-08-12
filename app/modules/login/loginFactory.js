@@ -7,19 +7,12 @@
 
 	function loginFactory($http) {
 
-		var user = {
-			name: 'Davy Engone',
-			email: 'davy@philos.io',
-			token: 'philosIscomingsoon'
-		};
+		function login (credentials) {
+			return $http.post('/login');
+		}
 		
-		// $http.get('url').then(function(user){
-		// 	currentUser = user;
-		// });
 		return {
-			login: function() {
-				return user;
-			}
+			login: login
 		}
 		
 	}
