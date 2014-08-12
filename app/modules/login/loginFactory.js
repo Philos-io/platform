@@ -5,20 +5,25 @@
 (function(){
 	'use strict';
 
-	function loginService($http) {
+	function loginFactory($http) {
 
 		var user = {
 			name: 'Davy Engone',
 			email: 'davy@philos.io',
 			token: 'philosIscomingsoon'
-		}
-		return  user;
+		};
 		
 		// $http.get('url').then(function(user){
 		// 	currentUser = user;
 		// });
+		return {
+			login: function() {
+				return user;
+			}
+		}
+		
 	}
 
-	angular.module('philosAngularApp').service('loginService', loginService);
+	angular.module('philosAngularApp').factory('loginFactory', ['$http', loginFactory]);
 
-});
+})();

@@ -5,27 +5,21 @@
 
   }
 
-  function configuration($urlRouterProvider, $routeProvider){
+  function configuration($routeProvider){
     $routeProvider
-    .when('/', {
-      controller: 'MainController',
-      templateUrl: 'views/main.html'
-    })
-    .when('/about', {
-      controller: 'MainController',
-      templateUrl: 'views/about.html'
-    })
-    
-    .otherwise({redirectTo : '/'});
+      .when('/', {
+        controller: 'MainController',
+        templateUrl: 'views/main.html'
+      })
+      .otherwise({redirectTo : '/'});
   }
 
   angular
     .module('philosAngularApp', [
       'ngRoute',
-      'ui.router',
       'login'
       ])
-    .config(['$urlRouterProvider', '$routeProvider', configuration])
+    .config(['$routeProvider', configuration])
     .controller('MainController', ['$scope', MainController]);
 
 })();
