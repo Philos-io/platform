@@ -7,8 +7,6 @@
 	
 	function LoginController(CurrentUser, loginFactory) {
 
-		console.log(loginFactory);
-
 		this.email = 'davy@philos.io';
 		this.password = 'this is a test';
 
@@ -18,11 +16,12 @@
 			remember: this.remember
 		}
 
-		this.submit = function(credentials) {
-			var result = loginFactory.login(credentials);
-			console.log(result);
-			CurrentUser = result;
-			window.CurrentUser = result;
+		this.login = function(credentials) {
+			var result = loginFactory.login(credentials).then(function(user){
+				console.log(user);
+				CurrentUser = user;
+				window.CurrentUser = user;
+			});
 		}
 	}
 
@@ -30,7 +29,7 @@
 		$routeProvider	
 			.when('/login', {
 		      	controller: 'LoginController',
-				controllerAs: 'login',
+				controllerAs: 'auth',
 				templateUrl: 'modules/login/login.html'
 		    });
 	}
