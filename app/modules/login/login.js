@@ -10,7 +10,7 @@
 			.when('/login', {
 		      	controller: 'LoginController',
 				controllerAs: 'auth',
-				templateUrl: 'modules/login/login.html'
+				templateUrl: 'views/login.html'
 		    });
 	}
 
