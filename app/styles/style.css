@@ -7,7 +7,6 @@ body{
 	font-size:12px;
 	height:auto;
 	width:100%;
-	transition:all ease-in 200ms;
 	position:relative;
 	z-index:0;
 }
@@ -132,6 +131,7 @@ h1{
 	background-color:#ff4c27;
 	margin-top:80px;
 	height:100vh;
+	min-height:auto;
 	width:100%;
 	color:#FFF;
 	text-align:center;
@@ -155,6 +155,7 @@ h1{
 	padding-top:80px;
 	padding-bottom:120px;
 	height:auto;
+	min-height:100vh;
 	width:100%;
 	color:#FFF;
 	text-align:center;
@@ -424,7 +425,7 @@ h1{
 	background-color:#f2f2f2;
 	padding-top:160px;
 	padding-bottom:80px;
-	height:auto;
+	min-height:auto;
 	width:100%;
 	color:#666;
 	text-align:center;
@@ -553,4 +554,305 @@ h1{
 #footer a:hover{
 	color:#27ffac;
 	text-decoration:underline;
+}
+
+#login{
+	height:auto;
+	min-height:100vh;
+	width:100%;
+	position:relative;
+}
+
+#login a{	
+	color:#00b36e;
+	font-weight:400;
+}
+
+
+#login_box{
+	background-color:#fff;
+	padding:20px;
+	height:210px;
+	width:640px;
+	position:absolute;
+	display:block;
+	top:50%;
+	left:50%;
+	margin-top:-110px;
+	margin-left:-330px;
+	border-radius:3px;
+}
+
+#login_box .title{
+	height:30px;
+	width:50%;
+	display:block;
+	float:left;
+	border-bottom:1px #ccc solid;
+	text-align:left;
+	color:#333;
+	font-size:16px;
+	font-weight:200;
+	margin-bottom:10px;
+}
+
+#login_box .signup{
+	height:30px;
+	width:50%;
+	display:block;
+	float:left;
+	border-bottom:1px #ccc solid;
+	text-align:right;
+	color:#333;
+	font-size:16px;
+	font-weight:200;
+	margin-bottom:10px;
+}
+
+#login_box .signup a{
+	color:#00b36e;
+	font-weight:600;
+	text-decoration:none;
+	transition:all ease-in 200ms;
+}
+
+#login_box .signup a:hover{
+	color:#27ffac;
+	font-weight:600;
+	text-decoration:none;
+}
+
+.social_signin{
+	float:left;
+}
+
+.button_git a{
+	width:165px;
+	background-image:url(../images/git_wbg.png);
+	background-position:8px center;
+	background-repeat:no-repeat;
+	display:block;
+	padding:11px 20px 9px 45px;
+	font-size:16px !important;
+	line-height:16px;
+	border:#000 2px solid;
+	color:#000 !important;
+	text-decoration:none;
+	border-radius:30px;
+	margin: 10px 0;
+	transition:all ease-in 200ms;
+	font-weight:600 !important;
+}
+
+.button_git a:hover{
+	background-image:url(../images/git_kbg.png);
+	background-color:#000;
+	color:#fff !important;
+	border:#000 2px solid;
+}
+
+.button_twitter a{
+	width:165px;
+	background-image:url(../images/twtr_wbg.png);
+	background-position:10px center;
+	background-repeat:no-repeat;
+	display:block;
+	padding:11px 20px 9px 45px;
+	font-size:16px !important;
+	line-height:16px;
+	border:#55acee 2px solid;
+	color:#55acee !important;
+	text-decoration:none;
+	border-radius:30px;
+	margin: 10px 0;
+	transition:all ease-in 200ms;
+	font-weight:600 !important;
+}
+
+.button_twitter a:hover{
+	background-image:url(../images/twtr_kbg.png);
+	background-color:#55acee;
+	color:#fff !important;
+	border:#55acee 2px solid;
+}
+
+.button_linkedin a{
+	width:165px;
+	background-image:url(../images/linkedin_wbg.png);
+	background-position:10px center;
+	background-repeat:no-repeat;
+	display:block;
+	padding:11px 20px 9px 45px;
+	font-size:16px !important;
+	line-height:16px;
+	border:#0976b4 2px solid;
+	color:#0976b4 !important;
+	text-decoration:none;
+	border-radius:30px;
+	margin: 10px 0;
+	transition:all ease-in 200ms;
+	font-weight:600 !important;
+}
+
+.button_linkedin a:hover{
+	background-image:url(../images/linkedin_kbg.png);
+	background-color:#0976b4;
+	color:#fff !important;
+	border:#0976b4 2px solid;
+}
+
+.or{
+	background:url(../images/or.png) center center no-repeat;
+	width:60px;
+	height:80px;
+	padding-top:70px;
+	margin-top:5px;
+	display:block; float:left;
+	color:#999;
+	text-align:center;
+}
+
+.signin_form{
+	display:block;
+	float:left;
+}
+
+.signin_form .field_email{
+	width:281px;
+	background-image:url(../images/login_user.png);
+	background-position:top left;
+	background-repeat:no-repeat;
+	background-color:#e5e5e5;
+	display:block;
+	padding:9px 20px 9px 45px;
+	text-decoration:none;
+	border-radius:30px;
+	margin: 10px 0;
+	transition:all ease-in 200ms;
+	font-weight:600 !important;
+}
+
+.signin_form .field_email:hover{
+	background-color:#f2f2f2;
+}
+
+.signin_form .field_password{
+	width:281px;
+	background-image:url(../images/login_password.png);
+	background-position:top left;
+	background-repeat:no-repeat;
+	background-color:#e5e5e5;
+	display:block;
+	padding:9px 20px 9px 45px;
+	text-decoration:none;
+	border-radius:30px;
+	margin: 10px 0;
+	transition:all ease-in 200ms;
+	font-weight:600 !important;
+}
+
+.signin_form .field_password:hover{
+	background-color:#f2f2f2;
+}
+
+
+
+.signin_form .field_email input{
+	width:288px;
+	height:20px;
+	background-position:top right;
+	background-repeat:no-repeat;
+	background-color:transparent;
+	font-family: 'Raleway', sans-serif;
+	font-size:16px !important;
+	line-height:16px;
+	color:#666 !important;
+	border:0;
+	margin-top:1px;
+}
+
+.signin_form .field_email input:focus{
+	border:0;
+	box-shadow:none;
+    outline:none;
+}
+
+
+
+.signin_form .field_password input{
+	width:288px;
+	height:20px;
+	background-position:top right;
+	background-repeat:no-repeat;
+	background-color:transparent;
+	font-family: 'Raleway', sans-serif;
+	font-size:16px !important;
+	line-height:16px;
+	color:#666 !important;
+	border:0;
+	margin-top:1px;
+}
+
+.signin_form .field_password input:focus{
+	border:0;
+	box-shadow:none;
+    outline:none;
+}
+
+.signin_form .field_email input:valid{
+	background-image:url(../images/v.png);
+}
+
+.signin_form .field_email input:focus:invalid{
+	background-image:url(../images/x.png);
+}
+
+
+.signin_form .field_password input:valid{
+	background-image:url(../images/v.png);
+}
+
+.signin_form .field_password input:focus:invalid{
+	background-image:url(../images/x.png);
+}
+
+.submit{
+	background-color:#00b36e;
+	width:100px;
+	font-family: 'Raleway', sans-serif;
+	font-size:16px !important;
+	font-weight:200 !important;
+	line-height:16px;
+	color:#fff !important;
+	text-decoration:none;
+	display:block;
+	float:right;
+	padding:10px 20px;
+	margin: 0px 0;
+	border-radius:30px;
+	border:0;
+	transition:all ease-in 200ms;
+}
+
+.submit:hover{
+	background-color:#27ffac;
+	color:#00b36e !important;
+	text-decoration:none;
+}
+
+.check{
+	font-size:12px;
+	width:auto;
+	display:block;
+	float:left;
+	margin-top:10px;
+	padding-left:5px;
+}
+
+.ok{
+	background-image:url(../images/v.png);
+}
+
+.not_ok{
+	background-image:url(../images/x.png);
 }

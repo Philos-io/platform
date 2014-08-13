@@ -7,8 +7,8 @@
 	
 	function LoginController(CurrentUser, loginFactory) {
 
-		this.email = 'davy@philos.io';
-		this.password = 'this is a test';
+		// this.email = 'davy@philos.io';
+		// this.password = 'this is a test';
 
 		var credentials = {
 			email: this.email,

@@ -1,22 +1,44 @@
-<div class="row" style="position:absolute; top: 200px; left: 30%">
-	<div class="login">
-		<div class="col-sm-3 col-md-3  socialLogin">
-			<button type="button" class="btn btn-default btn-lg btn-block">Sign in with Github</button>
-			<button type="button" class="btn btn-info btn-lg btn-block">Sign in with Twitter</button>
-			<button type="button" class="btn btn-primary btn-lg btn-block">Sign in with LinkedIn</button>
+<section id="login">
+	<div id="login_wrapper">
+		<div id="login_box">
+			<div class="title">
+				Sign in with one click
+			</div>
+			<div class="signup">
+				Not member yet ? <a href="#/signup">Sign up now!</a>
+			</div>
+			<div class="social_signin">
+				<div class="button_git">
+					<a href="#/auth/github">Sign in with GitHub</a>
+				</div>
+				<div class="button_twitter">
+					<a href="#/auth/twitter">Sign in with Twitter</a>
+				</div>
+				<div class="button_linkedin">
+					<a href="#/auth/linkedin">Sign in with LinkedIn</a>
+				</div>
+			</div>
+			<div class="or">
+				 or
+			</div>
+			<div class="signin_form">
+				<form method="post" id="login_form" name="loginForm" ng-submit="auth.login(credentials)" novalidate>
+					<div class="field_email">
+						<input id="youremailaddress" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="your email address" name="youremailaddress" type="email" required required title="your email address is a required to proceed" ng-model="auth.email"/>
+					</div>
+					<div class="field_password">
+						<input id="pwd_yourpassword"pattern=".{8,}" placeholder="your password" name="pwd_yourpassword" type="password" required title="your password is a required to proceed" ng-model="auth.password"/>
+					</div>
+					<div class="check">
+						<input id="chk_rememberme" name="chk_rememberme" type="checkbox" ng-model="auth.remember"/>
+						<span><label for="chk_rememberme" id="rememberme-ariaLabel">Remember me</label></span> | <a href="#">Forgot password</a> ? 
+					</div>
+					<div>
+						<input class="submit" type="submit" value="Sign In"/>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
-	
-	<form name="loginForm" ng-submit="auth.login(credentials)" novalidate>
-	  <label for="username">Email:</label>
-	  <input type="email" id="email"
-	         ng-model="auth.email">
-	  <label for="password">Password:</label>
-	  <input type="password" id="password"
-	         ng-model="auth.password">
-	  <button type="submit">Login</button>
-	</form>
-
-</div>
-
+</section>
 
