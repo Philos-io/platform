@@ -1,10 +1,14 @@
+/*
+* Authentication controller
+*/
+
 (function(){
 'use strict';
 	
-	function LoginController(CurrentUser, loginFactory) {
+	function AuthController(CurrentUser, loginFactory) {
 
-		// this.email = 'davy@philos.io';
-		// this.password = 'this is a test';
+		this.email = 'davy@philos.io';
+		this.password = 'this is a test';
 
 		var credentials = {
 			email: this.email,
@@ -22,11 +26,11 @@
 	}
 
 	angular
-		.module('login')
-		.controller('LoginController', [
+		.module('authentication')
+		.controller('AuthController', [
 				'CurrentUser',
-				'loginFactory',
-				LoginController
+				'authFactory',
+				AuthController
 			]);
 
 })();

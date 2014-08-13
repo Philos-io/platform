@@ -22,7 +22,7 @@
   angular
     .module('philosAngularApp', [
       'ngRoute',
-      'login'
+      'authentication'
       ])
     .config(['$routeProvider', configuration])
     .controller('MainController', ['CurrentUser', MainController]);
