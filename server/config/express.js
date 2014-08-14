@@ -5,14 +5,14 @@ var express         = require('express'),
     logger          = require('morgan'),
     session         = require('express-session');
 
-module.exports = function(app, config){
+module.exports = function(app, config, passport){
 	// Add middlewares
 	app.use(logger('dev'));
     app.use(bodyParser());
     app.use(cookieParser());
     app.use(session({secret: 'philosiscomingverysoon'}));
-    //app.use(passport.initialize());
-    //app.use(passport.session());
+    app.use(passport.initialize());
+    app.use(passport.session());
     app.use(express.static(path.join(__dirname, config.defaultDirectory)));
 };
 

@@ -1,13 +1,14 @@
 var express = require('express'),
+	passport = require('passport'),
 	app = express();
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var config = require('./config/config')(env);
 
-require('./config/express')(app, config);
-//require('./config/mongoose')(config);
-require('./config/routes')(app);
+require('./config/express')(app, config, passport);
+require('./config/mongoose')(config);
+require('./config/routes')(app, passport);
 
 // console.log(config.port);
 
@@ -16,6 +17,4 @@ require('./config/routes')(app);
 // }else{
 // 	app.listen(config.port);
 // }
-
-
 app.listen(config.port);

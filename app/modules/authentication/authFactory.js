@@ -7,12 +7,14 @@
 
 	function authFactory($http) {
 
-		function login (credentials) {
-			return $http.post('/login');
+		function signIn (credentials) {
+			console.log(credentials)
+			return $http.post('/signup', {credentials: credentials});
 		}
 
-		function signup(credentials) {
-			return $http.post('/signup');	
+		function signUp(credentials) {
+			console.log(credentials)
+			return $http.post('/signup', {credentials: credentials});	
 		}
 
 		function forgotPassword (email) {
@@ -20,8 +22,8 @@
 		}
 		
 		return {
-			login: login,
-			signup: signup,
+			signIn: signIn,
+			signUp: signUp,
 			forgot: forgotPassword
 		}
 		

@@ -22,7 +22,7 @@
 				 or
 			</div>
 			<div class="signin_form">
-				<form method="post" id="login_form" name="loginForm" ng-submit="auth.login(credentials)" novalidate>
+				<form method="post" id="login_form" name="loginForm" ng-submit="auth.signIn(auth)" novalidate>
 					<div class="field_email">
 						<input id="youremailaddress" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="your email address" name="youremailaddress" type="email" required required title="your email address is a required to proceed" ng-model="auth.email"/>
 					</div>
