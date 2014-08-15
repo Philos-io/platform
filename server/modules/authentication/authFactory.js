@@ -3,6 +3,7 @@ var passport = require('passport'),
 
 
 require('./authLocalConfiguration')(passport);
+require('./twitterConfiguration')(passport);
 
 
 var signIn = function(req, res, next){
@@ -25,18 +26,23 @@ var signUp = function(req, res, next){
 
 	passport.authenticate('signup', function(err, user) {
 		if (user) {
-			console.log(err);
 			return next(err);
 		}
 
-		res.json({
-			success: true
-		});
+		res.redirect('/#/trainings');
 	})(req, res, next);
 	
 };
 
+
+var signupWithTwitter = function(req, res, next) {
+	passport.authenticate('twitter', function(req, res) {
+		res.redirect('/#/trainings');
+	}(req, res, next));
+}
+
 module.exports = {
 	signIn : signIn,
-	signUp : signUp
+	signUp : signUp,
+	signupWithTwitter: signupWithTwitter
 }

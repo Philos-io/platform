@@ -16,6 +16,11 @@
         templateUrl: 'views/main.html',
         controllerAs: 'main'
       })
+      .when('/trainings', {
+        controller: 'MainController',
+        templateUrl: 'views/main.html',
+        controllerAs: 'main'
+      })
       .otherwise({redirectTo : '/'});
   }
 
