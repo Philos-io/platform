@@ -6,16 +6,16 @@
 'use strict';
 
 	function configuration($routeProvider) {
-		$routeProvider	
-			.when('/login', {
-		      	controller: 'AuthController',
-				controllerAs: 'auth',
-				templateUrl: 'modules/auth/login.html'
-		    })
+		$routeProvider
 		    .when('/signup', {
 		      	controller: 'AuthController',
 				controllerAs: 'auth',
-				templateUrl: 'modules/auth/signup.html'
+				templateUrl: 'modules/authentication/signup.html'
+		    })
+		    .when('/signin', {
+		      	controller: 'AuthController',
+				controllerAs: 'auth',
+				templateUrl: 'modules/authentication/signin.html'
 		    })
 		    .when('/forgot', {
 		      	controller: 'AuthController',
