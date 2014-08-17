@@ -1,22 +1,17 @@
 (function() {
   'use strict';
 
-  function MainController(CurrentUser) {
-    console.log(CurrentUser);
-    this.isAuth = function() {
-      console.log('test')
-      return true;
+  function MainController(CurrentUser, $location, $anchorScroll) {
+    
+    this.goTo = function(destination){
+      $location.hash(destination);
+      $anchorScroll();
     }
   }
 
   function configuration($routeProvider){
     $routeProvider
       .when('/', {
-        controller: 'MainController',
-        templateUrl: 'views/main.html',
-        controllerAs: 'main'
-      })
-      .when('/trainings', {
         controller: 'MainController',
         templateUrl: 'views/main.html',
         controllerAs: 'main'
@@ -30,7 +25,7 @@
       'authentication'
       ])
     .config(['$routeProvider', configuration])
-    .controller('MainController', ['CurrentUser', MainController]);
+    .controller('MainController', ['CurrentUser','$location','$anchorScroll', MainController]);
 
 })();
 
