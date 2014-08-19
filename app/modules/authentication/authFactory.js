@@ -8,13 +8,11 @@
 	function authFactory($http) {
 
 		function signIn (credentials) {
-			console.log(credentials)
-			return $http.post('/signup', {credentials: credentials});
+			return $http.post('/signin', credentials);
 		}
 
 		function signUp(credentials) {
-			console.log(credentials)
-			return $http.post('/signup', {credentials: credentials});	
+			return $http.post('/signup', credentials);	
 		}
 
 		function forgotPassword (email) {

@@ -12,9 +12,6 @@ module.exports = function(app, passport){
 
 	app.get('/auth/twitter/callback', AuthFactory.signupWithTwitter);
 
-	app.get('/logout', function(req, res){
-	  req.logout();
-	  res.redirect('/');
-	});
+	app.get('/logout', AuthFactory.logout);
 }
 

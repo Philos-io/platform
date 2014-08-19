@@ -22,7 +22,8 @@
   angular
     .module('philosAngularApp', [
       'ngRoute',
-      'authentication'
+      'authentication',
+      'training'
       ])
     .config(['$routeProvider', configuration])
     .controller('MainController', ['CurrentUser','$location','$anchorScroll', MainController]);
