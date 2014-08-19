@@ -3,7 +3,8 @@ var express         = require('express'),
     bodyParser      = require('body-parser'),
     cookieParser    = require('cookie-parser'),
     logger          = require('morgan'),
-    session         = require('express-session');
+    session         = require('express-session'),
+    flash           = require('connect-flash');
 
 module.exports = function(app, config, passport){
 	// Add middlewares
@@ -13,6 +14,7 @@ module.exports = function(app, config, passport){
     app.use(session({secret: 'philosiscomingverysoon'}));
     app.use(passport.initialize());
     app.use(passport.session());
+    app.use(flash());
     app.use(express.static(path.join(__dirname, config.defaultDirectory)));
 };
 
