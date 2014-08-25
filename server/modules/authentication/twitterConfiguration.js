@@ -64,7 +64,7 @@ module.exports = function(passport) {
           console.log(profile._json.location);
           newUser.twitter.language = profile._json.lang;
 
-
+          
           // save the user
           newUser.save(function(err) {
             if (err)

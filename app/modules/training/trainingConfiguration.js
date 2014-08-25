@@ -10,12 +10,12 @@
 			.when('/trainings', {
 		      	controller: 'TrainingController',
 				controllerAs: 'training',
-				templateUrl: 'modules/training/training.html'
+				templateUrl: 'modules/training/trainings.html'
 		    })
-		    .when('/training', {
+		    .when('/trainings/:training_id', {
 		      	controller: 'TrainingController',
 				controllerAs: 'training',
-				templateUrl: 'modules/training/training.html'
+				templateUrl: 'modules/training/trainingDetails.html'
 		    });
 	}
 
