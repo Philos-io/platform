@@ -9,12 +9,13 @@ var Schema 		= mongoose.Schema;
 var userSchema = Schema({
 	firstName: {
 		type: String,
-		required: true
 	},
 	lastName: {
 		type: String,
-		required: true
 	},
+    fullName: {
+        type: String
+    },
     local            : {
         email        : String,
         password     : String,
@@ -28,8 +29,11 @@ var userSchema = Schema({
     twitter          : {
         id           : String,
         token        : String,
+        image        : String,
         displayName  : String,
-        username     : String
+        username     : String,
+        location     : String,
+        language     : String
     },
     github           : {
         id           : String,

@@ -38,7 +38,7 @@ var signUp = function(req, res, next){
 
 
 var signupWithTwitter = function(req, res, next) {
-	passport.authenticate('twitter', function(req, res) {
+	passport.authenticate('twitter', function(err, user) {
 		res.redirect('/#/trainings');
 	}(req, res, next));
 }
