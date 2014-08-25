@@ -9,7 +9,7 @@
 		$routeProvider
 			.when('/trainings', {
 		      	controller: 'TrainingController',
-				controllerAs: 'training',
+				controllerAs: 'session',
 				templateUrl: 'modules/training/trainings.html'
 		    })
 		    .when('/trainings/:training_id', {

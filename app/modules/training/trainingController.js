@@ -6,6 +6,7 @@
 'use strict';
 	
 	function TrainingController(CurrentUser, trainingFactory) {
+		this.all = trainingFactory.getAll();
 	}
 
 	angular
