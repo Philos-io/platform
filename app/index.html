@@ -22,28 +22,13 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experie  nce.</p>
     <![endif]-->
-    <header id="top">
-      <div id="head">
-          <div class="logo"><a href="#top">Philos.io</a></div>
-          <div class="button_stroke right"><a href="#/signup">Get In</a></div>
-          <div class="clear"></div>
-      </div>
-    </header>
+    <div ng-include="'views/nav.html'" ng-controller="MainController"></div>
 
     <!-- Add your site or application content here -->
     <div ng-view></div>
     
     <!-- Add the footer here! -->
-    <footer id="page_bottom">
-      <div id="footer">
-          Philos&nbsp;-&nbsp;One&nbsp;week&nbsp;one&nbsp;project&nbsp;©&nbsp;2014&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#">User&nbsp;Agreement</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#">Privacy&nbsp;Policy</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#">Cookie Policy</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#">Copyright&nbsp;Policy</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#">Send&nbsp;Feedback</a>
-        </div>
-    </footer>
+    <div ng-include="'views/footer.html'"></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>

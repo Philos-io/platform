@@ -1366,3 +1366,10 @@ input{
   	bottom: 0.5em;
 	font-weight:400;
 }
+
+.profilePicture{
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	margin-right: 10px;	
+}

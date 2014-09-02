@@ -6,6 +6,15 @@
 'use strict';
 	
 	function TrainingController($window, CurrentUser, trainingFactory) {
+
+		if (!$window.CurrentUser) {
+			CurrentUser.fullname = 'Cyrille Pastorek';
+	      	CurrentUser.picture = 'images/cyrille.jpg';
+	      	CurrentUser.sessionsAttended = [];
+	      	CurrentUser.upcomingSessions = [];
+			$window.CurrentUser =  CurrentUser;
+		}
+
 		this.all = trainingFactory.getAll();
 	}
 
