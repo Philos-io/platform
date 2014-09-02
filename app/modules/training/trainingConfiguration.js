@@ -13,7 +13,7 @@
 				templateUrl: 'modules/training/trainings.html'
 		    })
 		    .when('/trainings/:training_id', {
-		      	controller: 'TrainingController',
+		      	controller: 'TrainingDetailsController',
 				controllerAs: 'training',
 				templateUrl: 'modules/training/trainingDetails.html'
 		    });
