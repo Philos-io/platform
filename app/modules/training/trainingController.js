@@ -5,13 +5,14 @@
 (function(){
 'use strict';
 	
-	function TrainingController(CurrentUser, trainingFactory) {
+	function TrainingController($window, CurrentUser, trainingFactory) {
 		this.all = trainingFactory.getAll();
 	}
 
 	angular
 		.module('training')
 		.controller('TrainingController', [
+				'$window',
 				'CurrentUser',
 				'trainingFactory',
 				TrainingController

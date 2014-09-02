@@ -3,7 +3,7 @@
         
         <div class="content">
 
-            <h1>Become a Node.js guru</h1>
+            <h1>{{training.title}}</h1>
             <div class="back_link"><a href="javascript:history.back()">back to the list</a></div>
             
             <div class="clear"></div>
@@ -12,24 +12,16 @@
             
                 <h2>Description</h2>
                 <div class="description">
-                    <p>Suspendisse in felis nisi. Donec fermentum quam et justo porttitor semper vel sed orci. Nunc ut lacus placerat, lobortis nibh sit amet, suscipit lacus. Proin sit amet odio suscipit, hendrerit erat quis, malesuada quam. Etiam eleifend adipiscing est non aliquet. Fusce quis facilisis tellus. Sed ullamcorper rutrum ipsum ut tempor. Sed ornare lacinia libero, in feugiat justo consectetur vitae.</p>
-                    
-                    <p>Ut non dolor quis lacus tincidunt tincidunt ullamcorper quis odio. Quisque id est convallis, bibendum orci non, rhoncus justo. Nunc eget adipiscing nisi. In fermentum sed arcu sit amet elementum. Ut id dictum sapien. Morbi at mollis dui. Proin vitae ipsum et nibh consequat accumsan in id magna. Vestibulum et dignissim elit, vel ornare arcu. Etiam sit amet orci elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer sollicitudin, leo sit amet placerat gravida, leo quam accumsan ligula, vitae mollis nisi nisl id nulla. Etiam ut posuere ante. Duis gravida vulputate quam sit amet consectetur. Donec et sodales ante, eget ultricies sapien. Nunc vel massa sit amet urna cursus vestibulum non eget nibh. Cras vitae pulvinar ante.</p>
-                    
-                    <p>Mauris ac gravida arcu. Nunc laoreet, enim eget vestibulum laoreet, tortor urna aliquam magna, at mollis dui nisl in nisi. Duis est enim, porta sed elit ultrices, malesuada aliquam lacus. Curabitur sem lectus, porta vel erat et, molestie varius sem. Etiam dictum rhoncus tincidunt. Nullam accumsan euismod volutpat. Ut sit amet nulla tincidunt, mattis felis in, bibendum sem. Integer non posuere nulla, quis consectetur justo. In fermentum tortor a mauris laoreet venenatis. Duis accumsan fringilla volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                    
-                    <p>Praesent nec magna leo. Pellentesque pretium fermentum est at iaculis. Praesent porttitor, lacus vitae malesuada ullamcorper, ante lectus convallis tellus, sed ullamcorper ante nunc id tellus. Proin sollicitudin vehicula tortor. Duis eu mi sit amet leo tempus tempor. Sed eu sem blandit, sollicitudin ipsum eget, malesuada sapien. Curabitur hendrerit porttitor augue, dapibus lacinia massa lobortis at. Vivamus rhoncus a sapien eu aliquam. Morbi ut luctus est, eu aliquam quam. Suspendisse congue, elit vel porta aliquet, augue lacus dapibus odio, ac tincidunt enim risus a nisl. Sed venenatis ligula nec accumsan pharetra. Quisque nunc tellus, condimentum id nisi ut, gravida varius nunc.</p>
-                    
-                    <p>Morbi non scelerisque felis. Fusce scelerisque sollicitudin aliquet. Mauris porta est id mi vulputate, ut commodo mi scelerisque. Maecenas interdum nibh vitae nisi gravida, ut dapibus tellus fermentum. Donec eget facilisis orci. Nunc ut diam mauris. Ut ornare magna et urna condimentum, a interdum nibh ullamcorper. Donec porta enim in convallis luctus. Curabitur faucibus condimentum ullamcorper. Etiam non ultrices massa. Nulla condimentum et turpis sit amet auctor. Nullam fermentum interdum ante vitae molestie. Proin at bibendum ipsum, nec tincidunt urna. Donec volutpat porttitor nisi tempus ultrices.</p>
+                    {{training.fullDescription}}
                 </div>
                     
             
                 <h2>About the organizer</h2>
                 <div class="profile_pic left"><img src="images/profile.jpg" width="80" height="80" alt="profile"></div>
                 <div class="organizer_txt left">
-                    <h3>Hulk Hogan</h3>
-                    Professional Wrestler
-                <div class="organizer_activity">14 trainings attended / 5 trainings organized</div>
+                    <h3>{{training.host.fullName}}</h3>
+                    {{training.host.profession}}
+                <div class="organizer_activity">{{training.host.sessionAttented}} attended / {{training.host.sessionOrganized}} trainings organized</div>
                 </div>
                 <div class="clear"></div>
             </div>
@@ -38,21 +30,14 @@
                 <a href="#">
                     <img src="images/nodejs.jpg" width="300" height="120" alt="node.js">
                 </a>
-                <div class="date">22-27 Sept. 2014 in <strong>Brussels</strong></div>
-                <div class="intensity"><strong>Intense</strong> (around 48 hours/week)</div>
-                <div class="tags_bloc">
+                <div class="date">{{training.date | date}} in <strong>{{training.location.city}}</strong></div>
+                <div class="intensity"><strong>{{training.pace}}</strong> {{training.paceDescription}}</div>
+                <div class="tags_bloc" ng-repeat="tag in training.tags">
                     <div class="tag">
-                      <a href="#">javascript</a>
-                    </div>
-                    <div class="tag">
-                      <a href="#">node.js</a>
-                    </div>
-                    <div class="tag">
-                      <a href="#">full stack</a>
+                      <a href="#">{{tag}}</a>
                     </div>
                     <div class="clear"></div>
                 </div>
-                
                 <div class="clear"></div>
                 
                 <div class="requirements_list">

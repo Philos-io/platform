@@ -3,18 +3,18 @@
         <div class="big_text">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec ligula eget quam tincidunt molestie. Suspendisse pulvinar porttitor mi in. Duis ipsum nibh, pulvinar vel.
         </div>
-        <div class="training_list" ng-repeat="training in session.all">
-            <div ng-class="{training_element: training.numberAttendees < training.maxAttendees, training_element_grey: training.numberAttendees === training.maxAttendees} ">
+        <div class="training_list" ng-repeat="training in session.all track by $index">
+            <div ng-class="training.numberAttendees === training.maxAttendees? 'training_element_grey': 'training_element'" class="animated flipInY">
                 <h1><a href="#/trainings/{{training.id}}">{{training.title}}</a></h1>
                 <span class="date">{{training.date}} in <strong>{{training.location.city}}</strong></span>
-                <a href="#/training/{{training.id}}"><img ng-src="{{training.image}}" width="300" height="120" alt="node.js"></a>
+                <a href="#/training/{{training.id}}"><img ng-src="{{training.image}}" width="300" height="120" alt="{{training.title}}"></a>
                 <div class="tags_bloc">
                     <div class="tag" ng-repeat="tag in training.tags">
                         <a href="#">{{tag}}</a>
                     </div>
                 </div>
                 <div class="description">
-                    {{training.description}}
+                    {{training.shortDescription}}
                 </div>
                 <div class="intensity">
                     {{training.pace}}
@@ -23,59 +23,10 @@
                 <div class="more_details"><a href="#/trainings/{{training.id}}"></a></div>
                 <div class="clear"></div>
             </div>
-            <!-- <div class="training_element">
-                <h1><a href="#/training">Introduction to JavaScript</a></h1>
-                <span class="date">22-27 Sept. 2014 in <strong>San Francisco</strong></span>
-                <a href="#/training"><img src="images/nodejs.jpg" width="300" height="120" alt="node.js"></a>
-                <div class="tags_bloc">
-                    <div class="tag">
-                        <a href="#">javascript</a>
-                    </div>
-                    <div class="tag">
-                        <a href="#">node.js</a>
-                    </div>
-                    <div class="tag">
-                        <a href="#">full stack</a>
-                    </div>
-                </div>
-                <div class="description">
-                    Curabitur id vulputate nisl, vel pulvinar dolor. Proin eu semper odio, sit amet vehicula tortor. Curabitur interdum sit amet erat hendrerit luctus. Vestibulum in mauris vitae lacus pulvinar ornare quis eu est. Duis euismod, neque eu lobortis imperdiet, mi lacus. 
-                </div>
-                <div class="intensity">
-                    Intense
-                </div>
-                <div class="cta"><a href="#/training">08<strong>/16 attendees</strong></a></div>
-                <div class="more_details"><a href="#/trainings/2"></a></div>
-                <div class="clear"></div>
-            </div>
-            <div class="training_element_grey">
-                <h1><a href="#/training">Introduction to JavaScript</a></h1>
-                <span class="date">22-27 Sept. 2014 in <strong>San Francisco</strong></span>
-                <a href="#/training"><img src="images/javascript.jpg" width="300" height="120" alt="node.js"></a>
-                <div class="tags_bloc">
-                    <div class="tag">
-                        <a href="#">javascript</a>
-                    </div>
-                    <div class="tag">
-                        <a href="#">node.js</a>
-                    </div>
-                    <div class="tag">
-                        <a href="#">full stack</a>
-                    </div>
-                </div>
-                <div class="description">
-                    Curabitur id vulputate nisl, vel pulvinar dolor. Proin eu semper odio, sit amet vehicula tortor. Curabitur interdum sit amet erat hendrerit luctus. Vestibulum in mauris vitae lacus pulvinar ornare quis eu est. Duis euismod, neque eu lobortis imperdiet, mi lacus. 
-                </div>
-                <div class="intensity">
-                    Intense
-                </div>
-                <div class="cta">Already full,  Want to be on the <a href="#/training">waiting list</a>?</div>
-                <div class="more_details"><a href="#/trainings/3"></a></div>
-                <div class="clear"></div>
-            </div> -->
             
             <div class="clear" ng-if="session.all.length - 1 === $index"></div>
         </div>
+        
     <div id="nothing_interesting">
         <div class="big_text">
             Nothing that interests you? What a pity!
