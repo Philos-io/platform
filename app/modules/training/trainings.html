@@ -1,13 +1,13 @@
 <section id="trainings">
     <div id="training_wrapper">
         <div class="big_text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec ligula eget quam tincidunt molestie. Suspendisse pulvinar porttitor mi in. Duis ipsum nibh, pulvinar vel.
+                List of <strong>One week, one project</strong> available in Belgium!
         </div>
         <div class="training_list" ng-repeat="training in session.all track by $index">
             <div ng-class="training.numberAttendees === training.maxAttendees? 'training_element_grey': 'training_element'" class="animated flipInY">
                 <h1><a href="#/trainings/{{training.id}}">{{training.title}}</a></h1>
                 <span class="date">{{training.date}} in <strong>{{training.location.city}}</strong></span>
-                <a href="#/training/{{training.id}}"><img ng-src="{{training.image}}" width="300" height="120" alt="{{training.title}}"></a>
+                <a href="#/trainings/{{training.id}}"><img ng-src="{{training.image}}" width="300" height="120" alt="{{training.title}}"></a>
                 <div class="tags_bloc">
                     <div class="tag" ng-repeat="tag in training.tags">
                         <a href="#">{{tag}}</a>
@@ -19,7 +19,7 @@
                 <div class="intensity">
                     {{training.pace}}
                 </div>
-                <div class="cta"><a href="#/training/{{training.id}}">{{training.numberAttendees}}<strong>/{{training.maxAttendees}} attendees</strong></a></div>
+                <div class="cta"><a href="#/trainings/{{training.id}}">{{training.attendees.length}}<strong>/{{training.maxAttendees}} attendees</strong></a></div>
                 <div class="more_details"><a href="#/trainings/{{training.id}}"></a></div>
                 <div class="clear"></div>
             </div>
