@@ -1,19 +1,24 @@
 (function() {
   'use strict';
 
-  function MainController(CurrentUser, $location, $anchorScroll, $rootScope) {
+  function MainController(CurrentUser, $location, $rootScope, $document, trainingFactory) {
     
+    var duration = 500, offset = 10;
+    this.session = {};
+    $document.scrollTop(0, duration)
+
     $rootScope.show = true;
+    this.session.all = trainingFactory.getAll();
     $rootScope.test = function() {
       this.show = false;
       $rootScope.CurrentUser = CurrentUser;
       console.log(this.isConnected, CurrentUser);
-    }
+    };
 
-    this.goTo = function(destination){
-      $location.hash(destination);
-      $anchorScroll();
-    }
+    this.goTo = function(section){
+      var trainings = angular.element(document.getElementById(section));
+      $document.scrollToElement(trainings, offset, duration);
+    };
   }
 
   function configuration($routeProvider, $locationProvider){
@@ -31,10 +36,11 @@
     .module('philosAngularApp', [
       'ngRoute',
       'authentication',
-      'training'
+      'training',
+      'duScroll'
       ])
     .config(['$routeProvider','$locationProvider', configuration])
-    .controller('MainController', ['CurrentUser','$location','$anchorScroll', '$rootScope', MainController]);
+    .controller('MainController', ['CurrentUser','$location', '$rootScope', '$document', 'trainingFactory', MainController]);
 
 })();
 
