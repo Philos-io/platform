@@ -37,11 +37,11 @@
 						},
 						{
 							unit: 'Unit 2: Building a web application using NodeJS',
-							topics: ['Build a restful API with Express or Hapi','Real time web application with Socket.io', 'Templating engine', 'Testing with Mocha', 'Using mongoose and MongoDB']
+							topics: ['Build a restful API with Express 4','Real time web application with Socket.io', 'Templating engine with Jade', 'Testing with Mocha', 'Using mongoose and MongoDB']
 						},
 						{
 							unit: 'Unit 3: Scaling and Deploying your NodeJS Application',
-							topics: ['Scaling and Deploying your NodeJS Application']
+							topics: ['Getting NodeJS application ready for production', 'Deploying on heroku', 'deploying on AWS', 'deploying on Azure']
 						},
 						{
 							unit: 'Unit 4: Internet of things',
@@ -68,11 +68,49 @@
 						fullName: 'Davy Engone',
 						profession: 'CTO',
 						picture: 'images/davy.jpg',
-						description: 'Davy is a Software Engineer and CTO at Philos.io. He runs all the operation from the backend to frontend including devops and mobile applications.',
+						description: 'Davy is Software Engineer and CTO at Philos.io. He has many years of experience as developer! He used to work for famo.us in the US where he led the team that build famo.us university! He also works as a trainer and consultant for Alten Belgium where he trained teams on technologies like JavaScript, KnockoutJS, ASP.NET Web API, Unit testing, AngularJS, NodeJS. Davy is an early adopter on many technologies including NodeJS, IonicFramework and AngularJS',
 						sessionAttented: 2,
 						sessionOrganized: 10
 					},
-					prerequis:['Your laptop', 'Github Account', 'NodeJS Installed', 'Heroku Account']
+					prerequis:['Your laptop', 'Github Account', 'NodeJS Installed', 'Heroku Account'],
+					who: ['Developers with experience using php, C#, Java, Scala...', 'Frontend dev who wants to learn more about the server side', 'Engineer with some programming experience'],
+					takeAways: ['Be able to prototype quickly your NodeJS', 'Pair programming', 'JavaScript is Everywhere: from Frontend to Robot'],
+					when: {
+						Monday: '',
+						{
+							day: 'Tuesday',
+							time: '18h30-23h30',
+							required: true
+						},
+						{
+							day: 'Wednesday',
+							time: '18h30-23h30',
+							required: true
+						},
+						{
+							day: 'Thursday',
+							time: '18h30-23h30',
+							required: true
+						},
+						{
+							day: 'Friday',
+							time: '18h30-23h30',
+							required: false,
+							description: 'The room will be available to work on your project the all evening! Not sure to have Davy around'
+						},
+						{
+							day: 'Saturday',
+							time: '9h00-21h00',
+							required: true,
+
+						},
+						{
+							day: 'Sunday',
+							time: '13h00-18h00',
+							required: false,
+							description: 'The room will be available for you if you want to work on your project! Davy will be around'
+						}
+					}
 				},
 				{
 					id: 20, //Math.floor(Math.random(100, 1000)*100),
