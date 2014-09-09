@@ -5,9 +5,11 @@
 (function(){
 'use strict';
 	
-	function TrainingDetailsController($routeParams, CurrentUser, trainingFactory, $rootScope) {
+	function TrainingDetailsController($routeParams, CurrentUser, trainingFactory, $rootScope, $document) {
 
 		this.session = trainingFactory.getTrainingById(parseInt($routeParams.training_id))[0];
+
+		$document.scrollTop(0, 0);
 
 		this.session.numberAttendees = this.session.attendees.length;
 
@@ -37,6 +39,7 @@
 				'CurrentUser',
 				'trainingFactory',
 				'$rootScope',
+				'$document',
 				TrainingDetailsController
 			]);
 

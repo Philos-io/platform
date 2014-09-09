@@ -33,7 +33,7 @@
 					description: [
 						{
 							unit: 'Unit 1: Getting Started With NodeJS',
-							topics: ['JavaScript Fundamental for understanding NodeJS','Installing NodeJS on Mac and Windows', 'Node Module System', 'Node Package Manager']
+							topics: ['JavaScript Fundamental for understanding NodeJS','Intro to git and GitHub workflow','Installing NodeJS on Mac and Windows', 'Node Module System', 'Node Package Manager']
 						},
 						{
 							unit: 'Unit 2: Building a web application using NodeJS',
@@ -73,36 +73,50 @@
 						sessionOrganized: 10
 					},
 					prerequis:['Your laptop', 'Github Account', 'NodeJS Installed', 'Heroku Account'],
-					who: ['Developers with experience using php, C#, Java, Scala...', 'Frontend dev who wants to learn more about the server side', 'Engineer with some programming experience'],
-					takeAways: ['Be able to prototype quickly your NodeJS', 'Pair programming', 'JavaScript is Everywhere: from Frontend to Robot'],
-					when: {
-						Monday: '',
+					who: ['Developers with experience using php, C#, Java, Scala...', 'Frontend dev who wants to learn more about the server side', 'Engineer with some programming experience', 'Computer Science Students'],
+					takeAways: ['Be able to prototype quickly your NodeJS', 'Pair programming', 'JavaScript OS: The big picture', 'Write clean and maintenable code', 'NodeJS will become a very good friend'],
+					when: [
+						{
+							day: 'Monday',
+							time: '18h30-23h30',
+							required: false,
+							description: 'Session starts on tuesdays',
+							open: false
+						},
 						{
 							day: 'Tuesday',
 							time: '18h30-23h30',
-							required: true
+							required: true,
+							description: '',
+							open: true
 						},
 						{
 							day: 'Wednesday',
 							time: '18h30-23h30',
-							required: true
+							required: true,
+							description: 'The room will be available to work on your project the all evening! Not sure to have Davy around',
+							open: true
 						},
 						{
 							day: 'Thursday',
 							time: '18h30-23h30',
-							required: true
+							required: true,
+							description: 'The room will be available to work on your project the all evening! Not sure to have Davy around',
+							open: true
 						},
 						{
 							day: 'Friday',
 							time: '18h30-23h30',
-							required: false,
-							description: 'The room will be available to work on your project the all evening! Not sure to have Davy around'
+							required: true,
+							description: 'The room will be available to work on your project the all evening! Not sure to have Davy around',
+							open: false
 						},
 						{
 							day: 'Saturday',
 							time: '9h00-21h00',
 							required: true,
-
+							description: 'The room will be available to work on your project the all evening! Not sure to have Davy around',
+							open: false
 						},
 						{
 							day: 'Sunday',
@@ -110,7 +124,7 @@
 							required: false,
 							description: 'The room will be available for you if you want to work on your project! Davy will be around'
 						}
-					}
+					]
 				},
 				{
 					id: 20, //Math.floor(Math.random(100, 1000)*100),
