@@ -236,7 +236,7 @@
 				},
 				{
 					id: 30, //Math.floor(Math.random(100, 1000)*100),
-					title: "Introduction to JavaScript",
+					title: "Introduction to JavaScript", // contest for building a product for a customer and let him pay for that!! 
 					shortDescription: "Curabitur id vulputate nisl, vel pulvinar dolor. Proin eu semper odio, sit amet vehicula tortor. Curabitur interdum sit amet erat hendrerit luctus. Vestibulum in mauris vitae lacus pulvinar ornare quis eu est. Duis euismod, neque eu lobortis imperdiet, mi lacus. ",
 					date: "22-27 Sept. 2014",
 					tags: ['javascript', 'node.js', 'angularjs'],

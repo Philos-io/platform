@@ -3,12 +3,12 @@
         
         <div class="content">
             
-            <h1>{{training.session.title}}</h1>
+            <h1 class="animated fadeInDown">{{training.session.title}}</h1>
             <div class="back_link"><a href="javascript:history.back()">back to the list</a></div>
             
             <div class="clear"></div>
             
-            <div class="col_desc right">
+            <div class="col_desc right animated fadeIn">
                 <h2>Description of crazy week: You're welcome</h2>
                 <div class="description">
                     <div ng-repeat="desc in training.session.description">
@@ -51,7 +51,7 @@
                 <div class="clear"></div>
             </div>
             
-            <div class="col_action left">
+            <div class="col_action left animated fadeIn">
                 <a href="#">
                     <img ng-src="{{training.session.image}}" width="300" height="120" alt="node.js">
                 </a>

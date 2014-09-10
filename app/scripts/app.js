@@ -5,7 +5,7 @@
     
     var duration = 500, offset = 10;
     this.session = {};
-    $document.scrollTop(0, duration);
+    //$document.scrollTop(0, duration);
 
     $rootScope.show = true;
     this.session.all = trainingFactory.getAll();
