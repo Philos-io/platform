@@ -1373,3 +1373,7 @@ input{
 	border-radius: 50%;
 	margin-right: 10px;	
 }
+
+.separator{
+  background: #00b36e;
+}

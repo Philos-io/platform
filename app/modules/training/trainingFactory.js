@@ -131,10 +131,10 @@
 					title: "Building LinkedIn mobile with Ionic Framework and AngularJS",
 					shortDescription: "Have you tried LinkedIn mobile? How did you find it? Straight to the point, right? Imagine you had the skills to build such an application? This is what you gonna learn during this intense session of 'One week, one project'! Our mentors will teach you how to use Angularjs, Cordova (ng-cordova) and NodeJS to build a slicker version of LinkedIn mobile! Join US!",
 					date: "30 Sept - 06 Oct. 2014",
-					tags: ['JavaScript', 'Cordova', 'iOS', 'Android', 'Ionic'],
+					tags: ['JavaScript', 'AngularJS', 'Ionic'],
 					pace: 'Intense',
-					paceDescription: '40 hours of NodeJS',
-					image: "images/nodejs.jpg",
+					paceDescription: '40 hours of hacking',
+					image: "images/angular-ionic.png",
 					maxAttendees: 12,
 					attendees: [],
 					cost: 160,
@@ -157,7 +157,7 @@
 						},
 						{
 							unit: 'Unit 5: Demo day',
-							topics: ['Here we are, you got the skills now show us what you built', 'Talk on security, and Q&A on ']
+							topics: ['Here we are, you got the skills now show us what you built', 'Introduction to Grunt/Gulp']
 						}
 					],
 					location: {
