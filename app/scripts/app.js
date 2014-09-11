@@ -1,8 +1,17 @@
 (function() {
   'use strict';
 
-  function MainController(CurrentUser, $location, $rootScope, $document, trainingFactory) {
+  function MainController(CurrentUser, $location, $rootScope, $document, trainingFactory, $firebase) {
     
+    var url = 'https://philos.firebaseio.com/Users';
+
+    var ref = new Firebase(url); 
+
+    var sync = $firebase(ref);
+
+    // download the data into a local object
+    this.data = sync.$asArray();
+
     var duration = 500, offset = 10;
     this.session = {};
     //$document.scrollTop(0, duration);
@@ -37,10 +46,12 @@
       'ngRoute',
       'authentication',
       'training',
-      'duScroll'
+      'duScroll',
+      'firebase'
       ])
+    .constant('FIREBASE_URL', 'https://PUT-YOUR-FIREBASE-URL-HERE.firebaseio.com/')
     .config(['$routeProvider','$locationProvider', configuration])
-    .controller('MainController', ['CurrentUser','$location', '$rootScope', '$document', 'trainingFactory', MainController]);
+    .controller('MainController', ['CurrentUser','$location', '$rootScope', '$document', 'trainingFactory','$firebase', MainController]);
 
 })();
 
