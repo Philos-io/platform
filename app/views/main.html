@@ -1,15 +1,19 @@
 <section id="home">
     <div id="presentation">
-        <div id="presentation_content">
-            <h1>One week, one project</h1>
-            <p>
-                A set of tools, technics, passion, help, mentorship, hard work, technologies and projects!!
-            </p>
-            <p>The week after you end up with new technics, new skills! You can prototype in no time whatever idea you have!</p>
+            <div id="presentation_content">
+                <div class="animated fadeInDown">
+                    <h1>One week, one project</h1>
+                    <p>
+                        A set of tools, technics, passion, help, mentorship, hard work, technologies and projects!!
+                    </p>
+                    <p>The week after you end up with new technics, new skills! You can prototype in no time whatever idea you have!</p>
+                </div>
+                <br>
             <br>
-        <br>
 
-        <div class="button_light center" style="width:250px;"><a ng-click="main.goTo('trainings')">Let's Start</a></div>
+            <div class="button_light center animated fadeInUp" style="width:200px;">
+                <a ng-click="main.goTo('trainings')">Let's Start</a>
+            </div>
         </div>
     </div>
 </section>
@@ -19,7 +23,7 @@
         <div class="big_text">
                 List of <strong>One week, one project</strong> available in Belgium!
         </div>
-        <div class="training_list" ng-repeat="training in main.session.all track by $index">
+        <div class="training_list" ng-repeat="training in main.session.all">
             <div ng-class="training.numberAttendees === training.maxAttendees? 'training_element_grey': 'training_element'" class="">
                 <h1><a href="#/trainings/{{training.id}}">{{training.title}}</a></h1>
                 <span class="date">{{training.date}} in <strong>{{training.location.city}}</strong></span>
@@ -43,12 +47,12 @@
             <div class="clear" ng-if="session.all.length - 1 === $index"></div>
         </div>
         
-    <div id="nothing_interesting">
-        <div class="big_text">
-            Nothing that interests you? What a pity!
-        </div>
-        <div class="button_light center" style="width:300px;"><a href="#2">Suggest a training</a></div>
-    </div>
+        <!-- <div id="nothing_interesting">
+            <div class="big_text">
+                Nothing that interests you? What a pity!
+            </div>
+            <div class="button_light center" style="width:300px;"><a href="#2">Suggest a training</a></div>
+        </div> -->
     </div>
 </section>
 

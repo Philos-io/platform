@@ -19,26 +19,26 @@
                         </ul>
                         <br>
                     </div>
-                </div>
-                <div class="description">
-                    <h3>Who will benefit the most of this session:</h3>
-                    <br/>
-                    <ul ng-repeat="who in training.session.who">
-                        <li>{{who}}</li>
-                    </ul>
-                    <br/>
-                    <h3>Schedule of the week:</h3>
-                    <br/>
-                    <ul ng-repeat="when in training.session.when">
-                        <li><pre>{{when}}</pre></li>
-                    </ul>
-                    <br/>
-                    <h3>Takeaways:</h3>
-                    <br/>
-                    <ul ng-repeat="takeaway in training.session.takeAways">
-                        <li><strong>{{takeaway}}</strong></li>
-                    </ul>
-                    <br/>
+                    <div>
+                        <h3>Who will benefit the most of this session:</h3>
+                        <br/>
+                        <ul ng-repeat="who in training.session.who">
+                            <li>{{who}}</li>
+                        </ul>
+                        <br/>
+                        <h3>Schedule of the week:</h3>
+                        <br/>
+                        <ul ng-repeat="when in training.session.when">
+                            <li><pre>{{when}}</pre></li>
+                        </ul>
+                        <br/>
+                        <h3>Takeaways:</h3>
+                        <br/>
+                        <ul ng-repeat="takeaway in training.session.takeAways">
+                            <li><strong>{{takeaway}}</strong></li>
+                        </ul>
+                        <br/>
+                    </div>
                 </div>
                 <h2>Trainer/Mentor</h2>
                 <div class="profile_pic left"><img ng-src="{{training.session.mentor.picture}}" width="80" height="80" alt="profile"></div>

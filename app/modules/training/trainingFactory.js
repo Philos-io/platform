@@ -74,7 +74,7 @@
 					},
 					prerequis:['Your laptop', 'Github Account', 'NodeJS Installed', 'Heroku Account'],
 					who: ['Developers with experience using php, C#, Java, Scala...', 'Frontend dev who wants to learn more about the server side', 'Engineer with some programming experience', 'Computer Science Students'],
-					takeAways: ['Be able to prototype quickly your NodeJS', 'Pair programming', 'JavaScript OS: The big picture', 'Write clean and maintenable code', 'NodeJS will become a very good friend'],
+					takeAways: ['Be able to prototype quickly your NodeJS application', 'Pair programming', 'JavaScript OS: The big picture', 'Write clean and maintenable code', 'NodeJS will become a very good friend'],
 					when: [
 						{
 							day: 'Monday',
