@@ -5,7 +5,7 @@
 (function(){
 'use strict';
 	
-	function TrainingController($window, CurrentUser, trainingFactory) {
+	function TrainingController($scope, $window, CurrentUser, trainingFactory) {
 
 		if (!$window.CurrentUser) {
 			CurrentUser.fullname = 'Cyrille Pastorek';
@@ -15,12 +15,13 @@
 			$window.CurrentUser =  CurrentUser;
 		}
 
-		this.all = trainingFactory.getAll();
+		$scope.trainings = trainingFactory.getAll();
 	}
 
 	angular
 		.module('training')
 		.controller('TrainingController', [
+				'$scope',
 				'$window',
 				'CurrentUser',
 				'trainingFactory',

@@ -3,15 +3,15 @@
         
         <div class="content">
             
-            <h1 class="animated fadeInDown">{{training.session.title}}</h1>
-            <div class="back_link"><a href="javascript:history.back()">back to the list</a></div>
+            <h1 class="animated fadeInDown">{{session.title}}</h1>
+            <div class="back_link"><a href="#/trainings">back to the list</a></div>
             
             <div class="clear"></div>
             
             <div class="col_desc right animated fadeIn">
                 <h2>Description of crazy week: You're welcome</h2>
                 <div class="description">
-                    <div ng-repeat="desc in training.session.description">
+                    <div ng-repeat="desc in session.description">
                         <h3>{{desc.unit}}</h3>
                         <br>
                         <ul ng-repeat="topic in desc.topics">
@@ -22,42 +22,42 @@
                     <div>
                         <h3>Who will benefit the most of this session:</h3>
                         <br/>
-                        <ul ng-repeat="who in training.session.who">
+                        <ul ng-repeat="who in session.who">
                             <li>{{who}}</li>
                         </ul>
                         <br/>
                         <h3>Schedule of the week:</h3>
                         <br/>
-                        <ul ng-repeat="when in training.session.when">
+                        <ul ng-repeat="when in session.when">
                             <li><pre>{{when}}</pre></li>
                         </ul>
                         <br/>
                         <h3>Takeaways:</h3>
                         <br/>
-                        <ul ng-repeat="takeaway in training.session.takeAways">
+                        <ul ng-repeat="takeaway in session.takeAways">
                             <li><strong>{{takeaway}}</strong></li>
                         </ul>
                         <br/>
                     </div>
                 </div>
                 <h2>Trainer/Mentor</h2>
-                <div class="profile_pic left"><img ng-src="{{training.session.mentor.picture}}" width="80" height="80" alt="profile"></div>
+                <div class="profile_pic left"><img ng-src="{{session.mentor.picture}}" width="80" height="80" alt="profile"></div>
                 <div class="organizer_txt left">
-                    <h3>{{training.session.mentor.fullName}}</h3>
-                    {{training.session.mentor.profession}} @
-                    {{training.session.mentor.company}}
-                <div class="organizer_activity">{{training.session.mentor.sessionAttented}} sessions attended / {{training.session.mentor.sessionOrganized}} sessions organized</div>
+                    <h3>{{session.mentor.fullName}}</h3>
+                    {{session.mentor.profession}} @
+                    {{session.mentor.company}}
+                <div class="organizer_activity">{{session.mentor.sessionAttented}} sessions attended / {{session.mentor.sessionOrganized}} sessions organized</div>
                 </div>
                 <div class="clear"></div>
             </div>
             
             <div class="col_action left animated fadeIn">
                 <a href="#" class="separator">
-                    <img ng-src="{{training.session.image}}" width="300" height="120" alt="node.js">
+                    <img ng-src="{{session.image}}" width="300" height="120" alt="node.js">
                 </a>
-                <div class="date">{{training.session.date}} in <strong>{{training.session.location.city}}</strong></div>
-                <div class="intensity"><strong>{{training.session.pace}}</strong> -- {{training.session.paceDescription}}</div>
-                <div class="tags_bloc" ng-repeat="tag in training.session.tags">
+                <div class="date">{{session.date}} in <strong>{{session.location.city}}</strong></div>
+                <div class="intensity"><strong>{{session.pace}}</strong> -- {{session.paceDescription}}</div>
+                <div class="tags_bloc" ng-repeat="tag in session.tags">
                     <div class="tag">
                       <a href="#">{{tag}}</a>
                     </div>
@@ -66,16 +66,16 @@
                 
                 <div class="requirements_list">
                     <h2>Requirements:</h2>
-                    <ul ng-repeat="prerequis in training.session.prerequis">
+                    <ul ng-repeat="prerequis in session.prerequis">
                         <li>{{prerequis}}</li>
                     </ul>
                 </div>
                 
                 <div class="CTA_box">
-                    <div class="attendies_number">{{training.session.numberAttendees}}/<strong>{{training.session.maxAttendees}}</strong> attendees</div>
+                    <div class="attendies_number">{{session.numberAttendees}}/<strong>{{session.maxAttendees}}</strong> attendees</div>
                     <div class="CTA">
-                        <div class="price left">{{training.session.cost | currency}}<sup>/week</sup></div>
-                        <div class="button_red right"><a ng-click="training.register()">I am in</a></div>
+                        <div class="price left">{{session.cost | currency}}<sup>/week</sup></div>
+                        <div class="button_red right"><a ng-click="register()">I am in</a></div>
                         <div class="clear"></div>
                     </div>
                 </div>

@@ -42,7 +42,7 @@
 						},
 						{
 							unit: 'Unit 3: Scaling and Deploying your NodeJS Application',
-							topics: ['Getting NodeJS application ready for production', 'Deploying on heroku', 'deploying on AWS', 'deploying on Azure']
+							topics: ['Getting NodeJS application ready for production', 'Deploying on heroku', 'Deploying on AWS', 'Deploying on Azure']
 						},
 						{
 							unit: 'Unit 4: Internet of things',
