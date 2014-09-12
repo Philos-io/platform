@@ -7,9 +7,6 @@
 	
 	function AuthController(CurrentUser, authFactory, $log) {
 
-		this.email = 'davy@philos.io';
-		this.password = 'test';
-
 		this.signIn = function() {
 			authFactory.signIn(this).then(success, fail);
 		}

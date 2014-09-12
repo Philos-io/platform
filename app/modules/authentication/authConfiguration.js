@@ -10,17 +10,17 @@
 		    .when('/signup', {
 		      	controller: 'AuthController',
 				controllerAs: 'auth',
-				templateUrl: 'modules/authentication/signup.html'
+				templateUrl: 'views/signup.html'
 		    })
 		    .when('/signin', {
 		      	controller: 'AuthController',
 				controllerAs: 'auth',
-				templateUrl: 'modules/authentication/signin.html'
+				templateUrl: 'views/signin.html'
 		    })
 		    .when('/forgot', {
 		      	controller: 'AuthController',
 				controllerAs: 'auth',
-				templateUrl: 'modules/authentication/forgot.html'
+				templateUrl: 'views/forgot.html'
 		    });
 	}
 

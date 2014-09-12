@@ -252,10 +252,10 @@
 					description: [
 						{
 							unit: 'Week 1: Getting started with JavaScript from Scratch',
-							topics: ['JavaScript Fundamentals', 'JavaScript Design patterns','Scope and closure', 'Advanced concepts in JavaScript', 'Dependency Injection', 'Designing a clone of the famous library lo-dashJS']
+							topics: ['JavaScript Fundamentals', 'JavaScript Design patterns', 'Advanced concepts in JavaScript', 'Dependency Injection', 'Designing a clone of the famous library lo-dashJS']
 						},
 						{
-							unit: 'Week 2: JavaScript for building in the Frontend',
+							unit: 'Week 2: JavaScript on the Frontend',
 							topics: ['Introduction to JQuery', 'Introduction to AngularJS','Introduction to Bootstrap', 'Testing your frontend application', 'Building Github viewer using AngularJS apps']
 						},
 						{
@@ -264,7 +264,7 @@
 						},
 						{
 							unit: 'Week 4: JavaScript for buiding mobile application',
-							topics: ['Getting started with the Ionic Framework', 'Getting started with Famo.us', 'Introduction to Cordova', 'Designing a clone of Viber using Famo.us']
+							topics: ['Getting started with the Ionic Framework', 'Getting started with Famo.us', 'Introduction to Cordova', 'Deploying your app on Android and iOS', 'Designing a clone of Viber using Famo.us']
 						},
 						{
 							unit: 'Week 5: JavaScript for the Internet of things',
