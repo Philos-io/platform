@@ -6,16 +6,7 @@
 'use strict';
 	
 	function TrainingController($scope, $window, CurrentUser, trainingFactory) {
-
-		if (!$window.CurrentUser) {
-			CurrentUser.fullname = 'Cyrille Pastorek';
-	      	CurrentUser.picture = 'images/cyrille.jpg';
-	      	CurrentUser.sessionsAttended = [];
-	      	CurrentUser.upcomingSessions = [];
-			$window.CurrentUser =  CurrentUser;
-		}
-
-		$scope.trainings = trainingFactory.getAll();
+		$scope.trainings = JSON.parse($window.localStorage.trainings);;
 	}
 
 	angular

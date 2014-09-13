@@ -1,19 +1,21 @@
 (function() {
   'use strict';
 
-  function MainController($scope, CurrentUser, $location, $rootScope, $document, trainingFactory, $firebase) {
+  function MainController($scope, CurrentUser, $location, $rootScope, $document, trainingFactory, $window) {
     var duration = 500, offset = 10;
     $scope.session = {};
     //$document.scrollTop(0, duration);
 
     $rootScope.show = true;
 
-    trainingFactory.getAll().then(function(trainings){
-      $scope.session.all = trainings;
-    });
-
-
-
+    if ($window.localStorage && !$window.localStorage.trainings) {
+      trainingFactory.getAll().then(function(trainings){
+        $scope.session.all = trainings;
+        $window.localStorage.trainings = JSON.stringify(trainings);
+      });
+    }else{
+      $scope.session.all = JSON.parse($window.localStorage.trainings);
+    }
 
     $rootScope.test = function() {
       $scope.show = false;
@@ -48,7 +50,7 @@
       ])
     .constant('FIREBASE_URL', 'https://PUT-YOUR-FIREBASE-URL-HERE.firebaseio.com/')
     .config(['$routeProvider','$locationProvider', configuration])
-    .controller('MainController', ['$scope', 'CurrentUser','$location', '$rootScope', '$document', 'trainingFactory','$firebase', MainController]);
+    .controller('MainController', ['$scope', 'CurrentUser','$location', '$rootScope', '$document', 'trainingFactory','$window', MainController]);
 
 })();
 

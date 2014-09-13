@@ -9,7 +9,7 @@
 	/*
 	*  TrainingFactory constructor
 	*/
-	function trainingFactory($resource, $q) {
+	function trainingFactory($resource, $q, $window) {
 
 		/*
 		* Get all the training sessions!!
@@ -39,7 +39,9 @@
 			  	var trainings = [];
 			  	
 			  	collection.forEach(function(item){
-			  		trainings.push(item.attributes);
+			  		var training = item.attributes;
+			  		training.id = item.id;
+			  		trainings.push(training);
 			  	});
 
 			  	defer.resolve(trainings);
@@ -57,7 +59,7 @@
 		* Get a training session by its id
 		*/
 		function getTrainingById(id){
-			return getAll().filter(function(session) {
+			return JSON.parse($window.localStorage.trainings).filter(function(session) {
 				return session.id === id;
 			});
 		}
@@ -70,7 +72,7 @@
 		
 	}
 
-	angular.module('philosAngularApp').factory('trainingFactory', ['$resource', '$q', trainingFactory]);
+	angular.module('philosAngularApp').factory('trainingFactory', ['$resource', '$q', '$window', trainingFactory]);
 
 })();
 
