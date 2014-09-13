@@ -1,30 +1,27 @@
 (function() {
   'use strict';
 
-  function MainController(CurrentUser, $location, $rootScope, $document, trainingFactory, $firebase) {
-    
-    var url = 'https://philos.firebaseio.com/Users';
-
-    var ref = new Firebase(url); 
-
-    var sync = $firebase(ref);
-
-    // download the data into a local object
-    this.data = sync.$asArray();
-
+  function MainController($scope, CurrentUser, $location, $rootScope, $document, trainingFactory, $firebase) {
     var duration = 500, offset = 10;
-    this.session = {};
+    $scope.session = {};
     //$document.scrollTop(0, duration);
 
     $rootScope.show = true;
-    this.session.all = trainingFactory.getAll();
+
+    trainingFactory.getAll().then(function(trainings){
+      $scope.session.all = trainings;
+    });
+
+
+
+
     $rootScope.test = function() {
-      this.show = false;
+      $scope.show = false;
       $rootScope.CurrentUser = CurrentUser;
-      console.log(this.isConnected, CurrentUser);
+      console.log($scope.isConnected, CurrentUser);
     };
 
-    this.goTo = function(section){
+    $scope.goTo = function(section){
       var trainings = angular.element(document.getElementById(section));
       $document.scrollToElement(trainings, offset, duration);
     };
@@ -35,8 +32,7 @@
     $routeProvider
       .when('/', {
         controller: 'MainController',
-        templateUrl: 'views/main.html',
-        controllerAs: 'main'
+        templateUrl: 'views/main.html'
       })
       .otherwise({redirectTo : '/'});
   }
@@ -44,6 +40,7 @@
   angular
     .module('philosAngularApp', [
       'ngRoute',
+      'ngResource',
       'authentication',
       'training',
       'duScroll',
@@ -51,7 +48,7 @@
       ])
     .constant('FIREBASE_URL', 'https://PUT-YOUR-FIREBASE-URL-HERE.firebaseio.com/')
     .config(['$routeProvider','$locationProvider', configuration])
-    .controller('MainController', ['CurrentUser','$location', '$rootScope', '$document', 'trainingFactory','$firebase', MainController]);
+    .controller('MainController', ['$scope', 'CurrentUser','$location', '$rootScope', '$document', 'trainingFactory','$firebase', MainController]);
 
 })();
 

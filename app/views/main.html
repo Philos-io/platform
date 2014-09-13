@@ -12,7 +12,7 @@
             <br>
 
             <div class="button_light center animated fadeInUp" style="width:200px;">
-                <a ng-click="main.goTo('trainings')">Let's Start</a>
+                <a ng-click="goTo('trainings')">Let's Start</a>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
         <div class="big_text">
                 List of <strong>One week, one project</strong> available in Belgium!
         </div>
-        <div class="training_list" ng-repeat="training in main.session.all">
+        <div class="training_list" ng-repeat="training in session.all">
             <div ng-class="training.attendees.length === training.maxAttendees? 'training_element_grey': 'training_element'">
                 <h1><a href="#/trainings/{{training.id}}">{{training.title}}</a></h1>
                 <span class="date">{{training.date}} in <strong>{{training.location.city}}</strong></span>
