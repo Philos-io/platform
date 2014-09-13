@@ -6,8 +6,6 @@
     $scope.session = {};
     //$document.scrollTop(0, duration);
 
-    $rootScope.show = true;
-
     if ($window.localStorage && !$window.localStorage.trainings) {
       trainingFactory.getAll().then(function(trainings){
         $scope.session.all = trainings;
@@ -16,12 +14,6 @@
     }else{
       $scope.session.all = JSON.parse($window.localStorage.trainings);
     }
-
-    $rootScope.test = function() {
-      $scope.show = false;
-      $rootScope.CurrentUser = CurrentUser;
-      console.log($scope.isConnected, CurrentUser);
-    };
 
     $scope.goTo = function(section){
       var trainings = angular.element(document.getElementById(section));

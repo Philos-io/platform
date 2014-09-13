@@ -9,17 +9,14 @@
 		$routeProvider
 		    .when('/signup', {
 		      	controller: 'AuthController',
-				controllerAs: 'auth',
 				templateUrl: 'views/signup.html'
 		    })
 		    .when('/signin', {
 		      	controller: 'AuthController',
-				controllerAs: 'auth',
 				templateUrl: 'views/signin.html'
 		    })
 		    .when('/forgot', {
 		      	controller: 'AuthController',
-				controllerAs: 'auth',
 				templateUrl: 'views/forgot.html'
 		    });
 	}

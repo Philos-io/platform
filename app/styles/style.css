@@ -1402,8 +1402,8 @@ input{
 @-webkit-keyframes fadeInUpSmall {
   0% {
     opacity: 0;
-    -webkit-transform: translate3d(0, 30px, 0);
-    transform: translate3d(0, 30px, 0);
+    -webkit-transform: translate3d(0, 20px, 0);
+    transform: translate3d(0, 20px, 0);
   }
 
   100% {
@@ -1416,9 +1416,9 @@ input{
 @keyframes fadeInUpSmall {
   0% {
     opacity: 0;
-    -webkit-transform: translate3d(0px, 30px, 0);
-    -ms-transform: translate3d(0, 30px, 0);
-    transform: translate3d(0, 30px, 0);
+    -webkit-transform: translate3d(0px, 20px, 0);
+    -ms-transform: translate3d(0, 20px, 0);
+    transform: translate3d(0, 20px, 0);
   }
 
   100% {
