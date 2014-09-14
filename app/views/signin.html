@@ -22,12 +22,12 @@
 				 or
 			</div>
 			<div class="signin_form">
-				<form method="post" id="login_form" ng-submit="auth.signIn(auth)" novalidate>
+				<form id="login_form" ng-submit="signIn()" novalidate>
 					<div class="field_email">
-						<input id="youremailaddress" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" ng-model="auth.email" placeholder="your email address" name="youremailaddress" type="email" required title="your email address is required to proceed"/>
+						<input id="youremailaddress" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" ng-model="login.email" placeholder="your email address" name="youremailaddress" type="email" required title="your email address is required to proceed"/>
 					</div>
 					<div class="field_password">
-						<input id="pwd_yourpassword" placeholder="your password" name="pwd_yourpassword" ng-model="auth.password" type="password" required title="your password is required to proceed"/>
+						<input id="pwd_yourpassword" placeholder="your password" name="pwd_yourpassword" ng-model="login.password" type="password" required title="your password is required to proceed"/>
 					</div>
 					<div class="check">
 						<input id="chk_rememberme" name="chk_rememberme" type="checkbox"/>

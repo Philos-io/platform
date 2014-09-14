@@ -9,20 +9,11 @@
 	/*
 	*  TrainingFactory constructor
 	*/
-	function trainingFactory($resource, $q) {
+	function trainingFactory($resource, $q, $window) {
 
 		/*
 		* Get all the training sessions!!
 		*/
-		var keys = {
-			js: 'LnV5YM6ZtvYZ7nrI2tx58IN8ABWTb67KgUJADAef',
-			appID :'sNUJR4kRaArwjeBtlkdcdSm5cmDYeHidBQIyIYVt',
-			server: 'F3JxL62hhpsnYK16oTg0R3A6SUdeQ6SLZmlWgSgQ',
-			client: 'GZIN8ZcKwlmcJe4Y8B14a2J17iFasnzQfAw8vZhX'
-		};
-
-		Parse.initialize(keys.appID, keys.js);
-
 		function getAll(){
 			// var trainings  = $resource("https://api.parse.com/1/classes/Training/1hN9ZYc3XW").get();
 
@@ -39,7 +30,9 @@
 			  	var trainings = [];
 			  	
 			  	collection.forEach(function(item){
-			  		trainings.push(item.attributes);
+			  		var training = item.attributes;
+			  		training.id = item.id;
+			  		trainings.push(training);
 			  	});
 
 			  	defer.resolve(trainings);
@@ -57,7 +50,7 @@
 		* Get a training session by its id
 		*/
 		function getTrainingById(id){
-			return getAll().filter(function(session) {
+			return JSON.parse($window.localStorage.trainings).filter(function(session) {
 				return session.id === id;
 			});
 		}
@@ -70,7 +63,7 @@
 		
 	}
 
-	angular.module('philosAngularApp').factory('trainingFactory', ['$resource', '$q', trainingFactory]);
+	angular.module('philosAngularApp').factory('trainingFactory', ['$resource', '$q', '$window', trainingFactory]);
 
 })();
 

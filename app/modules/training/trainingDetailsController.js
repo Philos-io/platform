@@ -7,7 +7,7 @@
 	
 	function TrainingDetailsController($scope, $routeParams, CurrentUser, trainingFactory, $rootScope, $document) {
 
-		$scope.session = trainingFactory.getTrainingById(parseInt($routeParams.training_id))[0];
+		$scope.session = trainingFactory.getTrainingById($routeParams.training_id)[0];
 
 		$document.scrollTop(0, 0);
 

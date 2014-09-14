@@ -1,25 +1,32 @@
 (function() {
   'use strict';
 
-  function MainController($scope, CurrentUser, $location, $rootScope, $document, trainingFactory, $firebase) {
+  function MainController($scope, $rootScope, $document, trainingFactory, $window) {
     var duration = 500, offset = 10;
     $scope.session = {};
     //$document.scrollTop(0, duration);
 
-    $rootScope.show = true;
+    // set the current user to the Parse.User.current()
+    var current = Parse.User.current();
+    if(current) {
+      $rootScope.currentUser = current.attributes;
 
-    trainingFactory.getAll().then(function(trainings){
-      $scope.session.all = trainings;
-    });
+      // TODO: Remove this once the user will be able to add his own picture
+      $rootScope.currentUser.picture = 'images/'+ $rootScope.currentUser.firstname +'.jpg';
+    }
+
+    // Show the login button only if the current user in undefined!!
+    $rootScope.displayLogin = !Parse.User.current();
 
 
-
-
-    $rootScope.test = function() {
-      $scope.show = false;
-      $rootScope.CurrentUser = CurrentUser;
-      console.log($scope.isConnected, CurrentUser);
-    };
+    if ($window.localStorage && !$window.localStorage.trainings) {
+      trainingFactory.getAll().then(function(trainings){
+        $scope.session.all = trainings;
+        $window.localStorage.trainings = JSON.stringify(trainings);
+      });
+    }else{
+      $scope.session.all = JSON.parse($window.localStorage.trainings);
+    }
 
     $scope.goTo = function(section){
       var trainings = angular.element(document.getElementById(section));
@@ -46,10 +53,18 @@
       'duScroll',
       'firebase'
       ])
-    .constant('FIREBASE_URL', 'https://PUT-YOUR-FIREBASE-URL-HERE.firebaseio.com/')
-    .config(['$routeProvider','$locationProvider', configuration])
-    .controller('MainController', ['$scope', 'CurrentUser','$location', '$rootScope', '$document', 'trainingFactory','$firebase', MainController]);
+    .run(function(){
+      var keys = {
+        js: 'LnV5YM6ZtvYZ7nrI2tx58IN8ABWTb67KgUJADAef',
+        appID :'sNUJR4kRaArwjeBtlkdcdSm5cmDYeHidBQIyIYVt',
+        server: 'F3JxL62hhpsnYK16oTg0R3A6SUdeQ6SLZmlWgSgQ',
+        client: 'GZIN8ZcKwlmcJe4Y8B14a2J17iFasnzQfAw8vZhX'
+      };
 
+      Parse.initialize(keys.appID, keys.js);
+    })
+    .config(['$routeProvider','$locationProvider', configuration])
+    .controller('MainController', ['$scope', '$rootScope', '$document', 'trainingFactory','$window', MainController]);
 })();
 
 
