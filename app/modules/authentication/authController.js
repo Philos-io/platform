@@ -30,14 +30,16 @@
 			authFactory.signUp($scope.user).then(success, fail);
 		}
 
-		$scope.logout = function(){
-			authFactory.logout();	
+		$rootScope.logout = function(){
+			debugger
+			authFactory.logout();
+			$location.path('/');	
 		}
 
 		function success(user) {
 			// Set the current user object
 			var currentUser = user;
-			currentUser.picture = 'images/cyrille.jpg';
+			currentUser.picture = 'images/'+user.firstname+'.jpg';
 
 			$rootScope.currentUser = currentUser;
 

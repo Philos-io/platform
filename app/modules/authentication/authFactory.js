@@ -69,6 +69,7 @@
 		return {
 			signIn: signIn,
 			signUp: signUp,
+			logout: logout,
 			forgot: forgotPassword
 		}
 		

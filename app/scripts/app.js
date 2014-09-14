@@ -7,10 +7,13 @@
     //$document.scrollTop(0, duration);
 
     // set the current user to the Parse.User.current()
-    $rootScope.currentUser = Parse.User.current();
+    var current = Parse.User.current();
+    if(current) {
+      $rootScope.currentUser = current.attributes;
 
-    // TODO: Remove this once the user will be able to add his own picture
-    $rootScope.currentUser.picture = 'images/cyrille.jpg';
+      // TODO: Remove this once the user will be able to add his own picture
+      $rootScope.currentUser.picture = 'images/'+ $rootScope.currentUser.firstname +'.jpg';
+    }
 
     // Show the login button only if the current user in undefined!!
     $rootScope.displayLogin = !Parse.User.current();
