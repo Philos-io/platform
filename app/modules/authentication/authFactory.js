@@ -7,16 +7,20 @@
 
 	function authFactory($q) {
 
+		// our factory use defer by default
+		var defer = $q.defer();
+		
 		// Log in to the app
-		function signIn (credentials) {
-			//return $http.post('/signin', credentials);
+		function signIn (info) {
+			Parse.User.logIn(info.email, info.password, {
+				success: success,
+				error: error
+			});
+			return defer.promise;
 		}
 
 		// Create a new user
 		function signUp(userInfo) {
-			debugger; 
-			var defer = $q.defer();
-
 			var user = new Parse.User();
 
 			// Add username by concatening first and last name
@@ -24,7 +28,7 @@
 			//be his twitter's handle
 			user.set('username', userInfo.email);
 
-			// Then add 
+			// Then add all the fields
 			for(var key in userInfo){
 				user.set(key, userInfo[key]);
 			}
@@ -35,22 +39,23 @@
 			});
 
 			return defer.promise;
-
-
-			function success(result) 	{
-			  	var user = result.attributes;
-			  	user.id = result.id;
-			  	
-			    defer.resolve(user);
-			}
-
-			function error(user, error) {
-			    defer.resolve({
-			    	user: user,
-			    	error: error
-			    });
-		  	}
 		}
+
+		// Private success handler
+		function success(result) 	{
+		  	var user = result.attributes;
+		  	user.id = result.id;
+		  	
+		    defer.resolve(user);
+		}
+
+		// Private error handler
+		function error(user, error) {
+		    defer.resolve({
+		    	user: user,
+		    	error: error
+		    });
+	  	}
 
 		// Login out of the app
 		function logout(){

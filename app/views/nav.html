@@ -1,10 +1,13 @@
 <header id="top">
 	<div id="head">
 		<div class="logo"><a href="#top">Philos.io</a></div>
-		<div class="button_stroke right" ng-show="signedIn || !auth"><a href="#/signin">Get In</a></div>
-		<div class="right" ng-show="signedIn"><a href="#/profile">
-			<img src="{{CurrentUser.picture}}" alt="" class="profilePicture animated rotateIn"/>
-		</a></div>
+		<div class="button_stroke right" ng-show="displayLogin"><a href="#/signin">Get In</a></div>
+		<div class="right" ng-show="currentUser">
+			<a href="#/profile">
+				<img src="{{currentUser.picture}}" alt="" class="profilePicture animated rotateIn"/>
+				<span>{{currentUser.firstname}}</span>
+			</a>
+		</div>
 		<div class="clear"></div>
 	</div>
 </header>	

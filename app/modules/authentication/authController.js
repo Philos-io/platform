@@ -5,7 +5,7 @@
 (function(){
 'use strict';
 	
-	function AuthController($scope, CurrentUser, authFactory, $rootScope, $location) {
+	function AuthController($scope, authFactory, $rootScope, $location) {
 
 		// User objedt
 		$scope.user = {
@@ -20,8 +20,7 @@
 			city: 'Tervuren'
 		};
 
-		$rootScope.auth = true;
-
+		$rootScope.displayLogin = false;
 
 		$scope.signIn = function() {
 			authFactory.signIn($scope.login).then(success, fail);
@@ -37,9 +36,12 @@
 
 		function success(user) {
 			// Set the current user object
-			CurrentUser = user;
-			CurrentUser.picture = 'images/cyrille.jpg';
+			var currentUser = user;
+			currentUser.picture = 'images/cyrille.jpg';
 
+			$rootScope.currentUser = currentUser;
+
+			$rootScope.auth = false;
 			// then redirect the user to the trainings page
 			$location.path('/trainings');
 		}
@@ -53,7 +55,6 @@
 		.module('authentication')
 		.controller('AuthController', [
 				'$scope',
-				'CurrentUser',
 				'authFactory',
 				'$rootScope',
 				'$location',

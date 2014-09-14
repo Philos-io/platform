@@ -1,10 +1,20 @@
 (function() {
   'use strict';
 
-  function MainController($scope, CurrentUser, $location, $rootScope, $document, trainingFactory, $window) {
+  function MainController($scope, $rootScope, $document, trainingFactory, $window) {
     var duration = 500, offset = 10;
     $scope.session = {};
     //$document.scrollTop(0, duration);
+
+    // set the current user to the Parse.User.current()
+    $rootScope.currentUser = Parse.User.current();
+
+    // TODO: Remove this once the user will be able to add his own picture
+    $rootScope.currentUser.picture = 'images/cyrille.jpg';
+
+    // Show the login button only if the current user in undefined!!
+    $rootScope.displayLogin = !Parse.User.current();
+
 
     if ($window.localStorage && !$window.localStorage.trainings) {
       trainingFactory.getAll().then(function(trainings){
@@ -40,10 +50,18 @@
       'duScroll',
       'firebase'
       ])
-    .constant('FIREBASE_URL', 'https://PUT-YOUR-FIREBASE-URL-HERE.firebaseio.com/')
-    .config(['$routeProvider','$locationProvider', configuration])
-    .controller('MainController', ['$scope', 'CurrentUser','$location', '$rootScope', '$document', 'trainingFactory','$window', MainController]);
+    .run(function(){
+      var keys = {
+        js: 'LnV5YM6ZtvYZ7nrI2tx58IN8ABWTb67KgUJADAef',
+        appID :'sNUJR4kRaArwjeBtlkdcdSm5cmDYeHidBQIyIYVt',
+        server: 'F3JxL62hhpsnYK16oTg0R3A6SUdeQ6SLZmlWgSgQ',
+        client: 'GZIN8ZcKwlmcJe4Y8B14a2J17iFasnzQfAw8vZhX'
+      };
 
+      Parse.initialize(keys.appID, keys.js);
+    })
+    .config(['$routeProvider','$locationProvider', configuration])
+    .controller('MainController', ['$scope', '$rootScope', '$document', 'trainingFactory','$window', MainController]);
 })();
 
 
