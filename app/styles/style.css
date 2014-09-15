@@ -360,7 +360,7 @@ input{
 	padding:5px 15px;
 }
 
-.tag a{
+.tag a, .tag.span{
 	background-color:#ff6141;
 	font-size:11px;
 	line-height:10px;
@@ -375,7 +375,7 @@ input{
 	transition:all ease-in 200ms;
 }
 
-.tag a:hover{
+.tag a:hover, .tag.span:hover{
 	background-color:#b32a0e;
 }
 
