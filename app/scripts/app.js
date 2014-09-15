@@ -12,7 +12,7 @@
       $rootScope.currentUser = current.attributes;
 
       // TODO: Remove this once the user will be able to add his own picture
-      $rootScope.currentUser.picture = 'images/'+ $rootScope.currentUser.firstname +'.jpg';
+      $rootScope.currentUser.picture = 'images/no_avatar.png';
     }
 
     // Show the login button only if the current user in undefined!!
@@ -51,7 +51,7 @@
       'authentication',
       'training',
       'duScroll',
-      'firebase'
+      'cart'
       ])
     .run(function(){
       var keys = {

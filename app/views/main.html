@@ -29,7 +29,7 @@
                 <span class="date">{{training.date}} in <strong>{{training.location.city}}</strong></span>
                 <a href="#/trainings/{{training.id}}"><img ng-src="{{training.image}}" width="300" height="120" alt="{{training.title}}"></a>
                 <div class="tags_bloc">
-                    <div class="tag" ng-repeat="tag in training.tags">
+                    <div class="tag" ng-repeat="tag in training.tags | limitTo: 3">
                         <a href="#">{{tag}}</a>
                     </div>
                 </div>

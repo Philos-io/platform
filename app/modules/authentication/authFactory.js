@@ -75,6 +75,6 @@
 		
 	}
 
-	angular.module('philosAngularApp').factory('authFactory', ['$q', authFactory]);
+	angular.module('authentication').factory('authFactory', ['$q', authFactory]);
 
 })();

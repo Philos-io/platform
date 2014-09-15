@@ -5,20 +5,21 @@
 (function(){
 'use strict';
 	
-	function AuthController($scope, authFactory, $rootScope, $location) {
+	function AuthController($scope, authFactory, $rootScope, $location, $document) {
 
 		// User objedt
-		$scope.user = {
-			firstname: 'davy',
-			lastname: 'engone',
-			email: 'davy@philos.io',
-			password: 'getbetter2',
-			mobile: '+32488790802',
-			address1: 'Dorpsplein 7/2',
-			address2: '',
-			postalcode: '3080',
-			city: 'Tervuren'
-		};
+		// $scope.user = {
+		// 	firstname: 'davy',
+		// 	lastname: 'engone',
+		// 	email: 'davy@philos.io',
+		// 	password: 'getbetter2',
+		// 	mobile: '+32488790802',
+		// 	address1: 'Dorpsplein 7/2',
+		// 	address2: '',
+		// 	postalcode: '3080',
+		// 	city: 'Tervuren'
+		// };
+		$document.scrollTop(0, 0);
 
 		$rootScope.displayLogin = false;
 
@@ -39,7 +40,7 @@
 		function success(user) {
 			// Set the current user object
 			var currentUser = user;
-			currentUser.picture = 'images/'+user.firstname+'.jpg';
+			currentUser.picture = 'images/no_avatar.png';
 
 			$rootScope.currentUser = currentUser;
 
@@ -60,6 +61,7 @@
 				'authFactory',
 				'$rootScope',
 				'$location',
+				'$document',
 				AuthController
 			]);
 
