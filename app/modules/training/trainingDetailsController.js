@@ -5,7 +5,7 @@
 (function(){
 'use strict';
 	
-	function TrainingDetailsController($scope, $routeParams, CurrentUser, trainingFactory, $rootScope, $document) {
+	function TrainingDetailsController($scope, $routeParams, trainingFactory, $location, $document) {
 
 		$scope.session = trainingFactory.getTrainingById($routeParams.training_id)[0];
 
@@ -17,17 +17,7 @@
 		* Register for a training
 		*/
 		$scope.register = function (){
-
-			// if the user in not logged then redirect to the login page
-
-			// Add the current user into the list of attendees for the current session
-			CurrentUser.upcomingSessions.push($scope.session.id);
-			// Add the session into the list of upcoming session fot the current user
-			$scope.session.attendees.push(CurrentUser);
-			$scope.session.numberAttendees++;
-			// redirect the user to eventbrite for payment
-
-			// Broadcast the information around the whole application
+			$location.path('/cart');
 		};
 	}
 
@@ -36,9 +26,8 @@
 		.controller('TrainingDetailsController', [
 				'$scope',
 				'$routeParams',
-				'CurrentUser',
 				'trainingFactory',
-				'$rootScope',
+				'$location',
 				'$document',
 				TrainingDetailsController
 			]);

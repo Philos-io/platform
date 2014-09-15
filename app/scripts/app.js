@@ -51,7 +51,7 @@
       'authentication',
       'training',
       'duScroll',
-      'firebase'
+      'cart'
       ])
     .run(function(){
       var keys = {
