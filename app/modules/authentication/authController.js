@@ -7,18 +7,6 @@
 	
 	function AuthController($scope, authFactory, $rootScope, $location, $document) {
 
-		// User objedt
-		// $scope.user = {
-		// 	firstname: 'davy',
-		// 	lastname: 'engone',
-		// 	email: 'davy@philos.io',
-		// 	password: 'getbetter2',
-		// 	mobile: '+32488790802',
-		// 	address1: 'Dorpsplein 7/2',
-		// 	address2: '',
-		// 	postalcode: '3080',
-		// 	city: 'Tervuren'
-		// };
 		$document.scrollTop(0, 0);
 
 		$rootScope.displayLogin = false;

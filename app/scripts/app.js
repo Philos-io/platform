@@ -51,6 +51,7 @@
       'authentication',
       'training',
       'duScroll',
+      'profile',
       'cart'
       ])
     .run(function(){
