@@ -3,30 +3,30 @@
 		<div class="social">
 	        
 			<div class="title">
-				 Hey <span class="open">{{user.firstname || 'Davy'}}</span>, how are you doing today?
+				 <span class="open">Hey {{user.firstname}}, how are you doing today?</span>
 			</div>
 	        
 			<div class="signin_link">
-				<button ng-click="edit()">Edit</button>
-				<button ng-click="edit()">My sessions</button>
+				<button ng-click="edit()" changemode>Edit</button>
+				<button ng-click="edit()">Sessions</button>
 			</div>
 	        
 	        <div class="clear"></div>
 	        
-			<div class="social_signup">
-				<div class="button_git">
+			<div class="social_signup" ng-show="enableSocialMedia()">
+				<div class="button_git" ng-show="!user.github">
 					<a href="/auth/github">Link your GitHub</a>
 				</div>
 				<div class="button_spacer">
 					&nbsp;
 				</div>
-				<div class="button_twitter">
+				<div class="button_twitter" ng-show="!user.twitter">
 					<a href="/auth/twitter">Link your Twitter</a>
 				</div>
 				<div class="button_spacer">
 					&nbsp;
 				</div>
-				<div class="button_linkedin">
+				<div class="button_linkedin" ng-show="!user.linkedIn">
 					<a href="/auth/linkedin">Link your LinkedIn</a>
 				</div>
 				<div class="clear">
@@ -64,8 +64,10 @@
 	            	
 	            	<div class="left">
 	                    <label for="youremailaddress" id="youremailaddress_label">Email address *</label>
-	                    <div class="field long_field">
+	                    	<div class="field medium_field">
 	                        <input id="youremailaddress" ng-show="isEditMode" ng-model="user.email" class="long_input" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter your email address" name="youremailaddress" type="email" required title="your email address is required to proceed"/>
+
+	                        <span ng-bind="user.email" ng-show="!isEditMode"></span>
 	                    </div>
 	                </div>
 	                
@@ -89,48 +91,76 @@
 	            	
 	            	<div class="left">
 	                  <label for="yourphone" id="yourphone_label">Your phone (Ex: +32479876543) *</label>
-	                  <div class="field medium_field">
+	                  	<div class="field medium_field">
 	                        <input id="yourphone" ng-show="isEditMode" ng-model="user.mobile" class="medium_input" placeholder="Enter your phone number" name="yourphone" type="tel" required title="your phone number is required to proceed"/>
+	                    	
+	                    	<span ng-bind="user.mobile" ng-show="!isEditMode"></span>
 	                    </div>
+
 	                </div>
 	                
 	                <div class="clear"></div>
 	            	
 	            	<div class="left">
 	                  <label for="yourpostaladdress" id="yourpostaladdress_label">Your postal address</label>
-	                  <div class="field long_field">
+	                  	<div class="field long_field">
 	                        <input id="yourpostaladdress" ng-show="isEditMode" ng-model="user.address1" style="background:none;" class="long_input" placeholder="Enter your postal address" name="yourpostaladdress" type="text" />
+	                    	
+	                    	<span ng-bind="user.address1" ng-show="!isEditMode"></span>
 	                    </div>
-	                </div>
-	                
-	                <div class="clear"></div>
-	            	
-	            	<div class="left">
-	                    <label for="yourpostaladdress_l2" id="yourpostaladdress_l2_label">Your postal address (line 2)</label>
-	                  <div class="field long_field">
-	                        <input id="yourpostaladdress_l2" ng-show="isEditMode" ng-model="user.address2" class="long_input" style="background:none;" placeholder="Enter your postal address (line 2)" name="yourpostaladdress_l2" type="text" />
-	                    </div>
+
 	                </div>
 	                
 	                <div class="clear"></div>
 	            	<div class="left">
 	                  <label for="postalcode" id="postalcode_Label">Postal code *</label>
-	                  <div class="field short_field">
+	                  	<div class="field short_field">
 	                        <input id="postalcode" ng-show="isEditMode" ng-model="user.postalcode" class="short_input" placeholder="Your postal code" name="postalcode" type="text" required title="your postal code is required to proceed"/>
+	                    	
+	                    	<span ng-bind="user.postalcode" ng-show="!isEditMode"></span>
 	                    </div>
 	                </div>
 	            	
-	           	  <div class="left">
+	           	  	<div class="left">
 	                    <label for="Yourcity" id="Yourcity_Label">Your city *</label>
 	                    <div class="field medium_field">
 	                        <input id="Yourcity" ng-show="isEditMode" ng-model="user.city" class="medium_input" pattern="^[a-zA-Z][a-zA-Z-.']{1,30}$" placeholder="Enter your city" name="Yourcity" type="text" required title="your city is required to proceed"/>
+
+	                    	<span ng-bind="user.city" ng-show="!isEditMode"></span>
+	                    </div>
+	                </div>
+					
+					<div class="clear"></div>
+
+	                <div class="left" ng-show="user.twitter">
+	                    <label for="twitter">Twitter account</label>
+	                    <div class="field medium_field">
+	                    	<span ng-bind="user.twitter"></span>
+	                    </div>
+	                </div>
+
+	                <div class="clear"></div>
+					
+	                <div class="left" ng-show="user.github">
+	                    <label for="github">Github account</label>
+	                    <div class="field medium_field">
+	                    	<span ng-bind="user.github"></span>
+	                    </div>
+	                </div>
+
+	                <div class="clear"></div>
+					
+	                <div class="left" ng-show="user.linkedIn">
+	                    <label for="linkedIn">LinkedIn account</label>
+	                    <div class="field medium_field">
+	                    	<span ng-bind="user.linkedIn"></span>
 	                    </div>
 	                </div>
 	                
 	                <div class="clear"></div>
 	                
 	              	<div class="signup_validation" ng-show="isEditMode">
-						<input class="submit" type="submit" value="Sign Up"/>
+						<input class="submit" type="submit" value="Update"/>
 					</div>
 				</form>
 			</div>
