@@ -5,7 +5,7 @@
 (function(){
 'use strict';
 	
-	function TrainingDetailsController($scope, $routeParams, trainingFactory, $location, $document) {
+	function TrainingDetailsController($scope, $routeParams, trainingFactory, $location, $document, $window, $rootScope, CurrentUser) {
 
 		$scope.session = trainingFactory.getTrainingById($routeParams.training_id)[0];
 
@@ -17,7 +17,26 @@
 		* Register for a training
 		*/
 		$scope.register = function (){
-			$location.path('/cart');
+			// if undefined redirect the user to the login page
+			if (!$rootScope.currentUser) {
+				$location.path('/signin');
+			}
+
+			var currentUser = $rootScope.currentUser;
+
+			if (!currentUser.sessions) {
+				currentUser.sessions = [];
+			}
+
+			// Add the current session into the user upcoming sessions
+			currentUser.sessions.push($scope.session);
+
+			$location.path('/profile');
+			// Redirect the user to eventbrite.com
+
+
+			// For now redirect the user to the registration page 
+			//$window.location.href = 'http://www.philos.io';
 		};
 	}
 
@@ -29,6 +48,9 @@
 				'trainingFactory',
 				'$location',
 				'$document',
+				'$window',
+				'$rootScope',
+				'CurrentUser',
 				TrainingDetailsController
 			]);
 

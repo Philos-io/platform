@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function MainController($scope, $rootScope, $document, trainingFactory, $window) {
+  function MainController($scope, $rootScope, $document, trainingFactory, $window, CurrentUser) {
     var duration = 500, offset = 10;
     $scope.session = {};
     //$document.scrollTop(0, duration);
@@ -13,6 +13,9 @@
 
       // TODO: Remove this once the user will be able to add his own picture
       $rootScope.currentUser.picture = 'images/no_avatar.png';
+
+      // Set the current user constant
+      CurrentUser = $rootScope.currentUser;
     }
 
     // Show the login button only if the current user in undefined!!
@@ -63,9 +66,11 @@
       };
 
       Parse.initialize(keys.appID, keys.js);
+
+      
     })
     .config(['$routeProvider','$locationProvider', configuration])
-    .controller('MainController', ['$scope', '$rootScope', '$document', 'trainingFactory','$window', MainController]);
+    .controller('MainController', ['$scope', '$rootScope', '$document', 'trainingFactory','$window', 'CurrentUser', MainController]);
 })();
 
 

@@ -2,7 +2,7 @@
 	'use strict';
 
 
-	function ProfileController($scope, $document){
+	function ProfileController($scope, $document, $rootScope){
 
 		$document.scrollTop(0, 0);
 
@@ -14,12 +14,27 @@
 			password: 'getbetter2',
 			mobile: '+32488790802',
 			address1: 'Dorpsplein 7/2',
-			address2: '',
 			postalcode: '3080',
-			city: 'Tervuren'
+			city: 'Tervuren',
+			companyOrSchool: 'Philos.io',
+			jobTitle: 'Software Engineer',
+			linkedIn: '',
+			twitter: '',
+			github: ''
 		};
 
 		$scope.isEditMode = false;
+		$scope.showSession = false;
+
+		$scope.enableSocialMedia = function(){
+			var user = $scope.user;
+			return !(user.github && user.linkedIn && user.twitter);
+		};
+
+		$scope.sessions = function(){
+			$scope.trainings = $rootScope.currentUser.sessions;
+			$scope.showSession = !$scope.showSession;
+		};
 
 		$scope.edit = function(){
 			$scope.isEditMode = !$scope.isEditMode;	
@@ -32,5 +47,21 @@
 	}	
 
 	angular.module('profile')
-		.controller('ProfileController', ['$scope', '$document', ProfileController]);
+		.controller('ProfileController', ['$scope', '$document', '$scope', ProfileController])
+		.directive('changemode', function(){
+			return {
+				restrict:'A',
+				link: function(scope, el, attrs, ctrl){
+					el.click(function(evt){
+						var text = el.text();
+						if (text === 'Edit') { 
+							el.text('Cancel'); 
+						}else{
+							el.text('Edit');
+						}
+					});
+				}
+			}
+		});
+
 })();
