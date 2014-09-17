@@ -1,4 +1,4 @@
-<section id="signup" class="animated fadeInUpSmall">
+<section id="profile" class="animated fadeInUpSmall">
 	<div id="signup_box">
 		<div class="social">
 	        
@@ -8,7 +8,7 @@
 	        
 			<div class="signin_link">
 				<button ng-click="edit()" changemode>Edit</button>
-				<button ng-click="edit()">Sessions</button>
+				<button ng-click="sessions()">Sessions</button>
 			</div>
 	        
 	        <div class="clear"></div>
@@ -33,7 +33,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="form_box">
+		<div id="form_box" ng-show="!showSession">
 			<div class="title">
 			</div>
 	        
@@ -164,6 +164,31 @@
 					</div>
 				</form>
 			</div>
+		</div>
+		<div ng-show="showSession">
+			
+	        <div class="training_list animated fadeInUpSmall" ng-repeat="training in trainings">
+	            <div ng-class="training.attendees.length === training.maxAttendees? 'training_element_grey': 'training_element'">
+	                <h1><a href="#/trainings/{{training.id}}">{{training.title}}</a></h1>
+	                <span class="date">{{training.date}} in <strong>{{training.location.city}}</strong></span>
+	                <a href="#/trainings/{{training.id}}"><img ng-src="{{training.image}}" width="300" height="120" alt="{{training.title}}"></a>
+	                <div class="tags_bloc">
+	                    <div class="tag" ng-repeat="tag in training.tags">
+	                        <a>{{tag}}</a>
+	                    </div>
+	                </div>
+	                <div class="description">
+	                    {{training.shortDescription}}
+	                </div>
+	                <div class="intensity">
+	                    {{training.pace}}
+	                </div>
+	                <div class="cta"><a href=""><strong>Congratulation, you're In!!</strong></a></div>
+	                <div class="clear"></div>
+	            </div>
+	            
+	            <div class="clear" ng-if="session.all.length - 1 === $index"></div>
+    		</div>
 		</div>
 	</div>
 </section>

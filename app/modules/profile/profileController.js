@@ -2,7 +2,7 @@
 	'use strict';
 
 
-	function ProfileController($scope, $document){
+	function ProfileController($scope, $document, $rootScope){
 
 		$document.scrollTop(0, 0);
 
@@ -24,11 +24,17 @@
 		};
 
 		$scope.isEditMode = false;
+		$scope.showSession = false;
 
 		$scope.enableSocialMedia = function(){
 			var user = $scope.user;
 			return !(user.github && user.linkedIn && user.twitter);
-		}
+		};
+
+		$scope.sessions = function(){
+			$scope.trainings = $rootScope.currentUser.sessions;
+			$scope.showSession = !$scope.showSession;
+		};
 
 		$scope.edit = function(){
 			$scope.isEditMode = !$scope.isEditMode;	
@@ -41,7 +47,7 @@
 	}	
 
 	angular.module('profile')
-		.controller('ProfileController', ['$scope', '$document', ProfileController])
+		.controller('ProfileController', ['$scope', '$document', '$scope', ProfileController])
 		.directive('changemode', function(){
 			return {
 				restrict:'A',
