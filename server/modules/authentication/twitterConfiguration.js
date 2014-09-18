@@ -1,8 +1,46 @@
 var  TwitterStrategy = require('passport-twitter').Strategy,
-      User          = require('../../models/user');
+     User          = require('../../models/user');
 
 module.exports = function(passport) {
-  // load up the user model
+  
+  console.log('inside passport for twitter');
+
+  passport.use(new TwitterStrategy({
+    consumerKey: 'yFDw1dYkawNsCBvC1CJzOFeTZ',
+    consumerSecret: 'DOfQ6AMQquiTAPCyCquRmMNXyug2eQ83SFWzh1uOxbt63M0il4',
+    callbackURL: '/auth/twitter/callback'
+    },
+    function(accessToken, refreshToken, profile, done) {
+       process.nextTick(function () {
+          console.log(profile);
+          return done(null, profile);
+       });
+    }
+  ));
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // load up the user model
 
   // passport.use('twitter', new TwitterStrategy({
   //     consumerKey: 'yFDw1dYkawNsCBvC1CJzOFeTZ',
@@ -27,58 +65,64 @@ module.exports = function(passport) {
   //     });
   //   }
   // ));
+
+  // passport.serializeUser(function(user, done) {
+  //   done(null, user);
+  // });
+
+  // passport.deserializeUser(function(obj, done) {
+  //   done(null, obj);
+  // });
   
-  var options = {
-    consumerKey: 'yFDw1dYkawNsCBvC1CJzOFeTZ',
-    consumerSecret: 'DOfQ6AMQquiTAPCyCquRmMNXyug2eQ83SFWzh1uOxbt63M0il4',
-    callbackURL: "/auth/twitter/callback"
-  };
+  // var options = {
+  //   consumerKey: 'yFDw1dYkawNsCBvC1CJzOFeTZ',
+  //   consumerSecret: 'DOfQ6AMQquiTAPCyCquRmMNXyug2eQ83SFWzh1uOxbt63M0il4',
+  //   callbackURL: "/auth/twitter/callback"
+  // };
 
-  function verify(token, tokenSecret, profile, done) {
-    User.findOne({ 'twitter.displayName' : profile.displayName }, function(err, user) {
-        // if there are any errors, return the error
-        if (err){
-            return done(err);
-        }
+  // function verify(token, tokenSecret, profile, done) {
+  //   User.findOne({ 'twitter.displayName' : profile.displayName }, function(err, user) {
+  //       // if there are any errors, return the error
+  //       if (err){
+  //           return done(err);
+  //       }
 
-        // check to see if theres already a user with that email
-        if (user) {
-            return done(null, false, user);
-        } else {
+  //       // check to see if theres already a user with that email
+  //       if (user) {
+  //           return done(null, false, user);
+  //       } else {
 
-          console.log(profile._json);
-          // if there is no user with that email
-          // create the user
-          var newUser            = new User();
+  //         console.log(profile._json);
+  //         // if there is no user with that email
+  //         // create the user
+  //         var newUser            = new User();
 
-          // set the user's local credentials
-          newUser.local.email    = "";                    
-          newUser.fullName = profile._json.name;
-          console.log(profile._json.name);
-          newUser.twitter.displayName = profile._json.displayName;
-          newUser.twitter.id = profile.id;
-          console.log(profile._json.id);
-          newUser.twitter.image = profile._json.profile_image_url;
-          console.log(profile._json.profile_image_url);
-          newUser.twitter.location = profile._json.location;
-          console.log(profile._json.location);
-          newUser.twitter.language = profile._json.lang;
+  //         // set the user's local credentials
+  //         newUser.local.email    = "";                    
+  //         newUser.fullName = profile._json.name;
+  //         console.log(profile._json.name);
+  //         newUser.twitter.displayName = profile._json.displayName;
+  //         newUser.twitter.id = profile.id;
+  //         console.log(profile._json.id);
+  //         newUser.twitter.image = profile._json.profile_image_url;
+  //         console.log(profile._json.profile_image_url);
+  //         newUser.twitter.location = profile._json.location;
+  //         console.log(profile._json.location);
+  //         newUser.twitter.language = profile._json.lang;
 
           
-          // save the user
-          newUser.save(function(err) {
-            if (err)
-                throw err;
-            return done(null, newUser);
-          });
-        }
+  //         // save the user
+  //         newUser.save(function(err) {
+  //           if (err)
+  //               throw err;
+  //           return done(null, newUser);
+  //         });
+  //       }
 
-    });
-  }
+  //   });
+  // }
 
 
-  passport.use(new TwitterStrategy(options,verify));
-
-}
+  // passport.use(new TwitterStrategy(options,verify));
 
 
