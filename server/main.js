@@ -1,6 +1,13 @@
 var express = require('express'),
 	passport = require('passport'),
-	app = express();
+	app = express(),
+	Parse = require('parse').Parse;
+
+	var masterKey = 'IX0pW5PBH1AkSfvOcN4LEjeDWLyGp6DlLeEacIgL';
+	var key = 'LnV5YM6ZtvYZ7nrI2tx58IN8ABWTb67KgUJADAef';
+  	Parse.initialize('sNUJR4kRaArwjeBtlkdcdSm5cmDYeHidBQIyIYVt', key);
+
+
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -11,81 +18,30 @@ require('./config/express')(app, config, passport);
 require('./config/routes')(app, passport);
 
 
+	// var query = new Parse.Query(Parse.User);
 
 
+ 	// query.get('QxakRiCe23',{
+  //   	success: function(user){	
 
-var passport = require('passport')
-  , TwitterStrategy = require('passport-twitter').Strategy;
+  //   		Parse.User.logIn('davy@philos.io', 'getbetter2', {
+		// 	  success: function(user) {
+		// 	  	console.log('inside success', Parse.User.current());
+	 //        	user.set('firstname', 'davy');
+	 //        	user.set('twitter', 'davyengone');
 
-passport.use(new TwitterStrategy({
-    consumerKey: 'yFDw1dYkawNsCBvC1CJzOFeTZ',
-    consumerSecret: 'DOfQ6AMQquiTAPCyCquRmMNXyug2eQ83SFWzh1uOxbt63M0il4',
-    callbackURL: "http://locahost:9000/auth/twitter/callback"
-  },
-  function(token, tokenSecret, profile, done) {
-    User.findOne({ 'twitter.displayName' : profile.displayName }, function(err, user) {
-        // if there are any errors, return the error
-        if (err){
-            return done(err);
-        }
-
-        // check to see if theres already a user with that email
-        if (user) {
-            return done(null, false, user);
-        } else {
-
-          console.log(profile._json);
-          // if there is no user with that email
-          // create the user
-          var newUser            = new User();
-
-          // set the user's local credentials
-          newUser.local.email    = "";                    
-          newUser.fullName = profile._json.name;
-          console.log(profile._json.name);
-          newUser.twitter.displayName = profile._json.displayName;
-          newUser.twitter.id = profile.id;
-          console.log(profile._json.id);
-          newUser.twitter.image = profile._json.profile_image_url;
-          console.log(profile._json.profile_image_url);
-          newUser.twitter.location = profile._json.location;
-          console.log(profile._json.location);
-          newUser.twitter.language = profile._json.lang;
-
-          
-          // save the user
-          newUser.save(function(err) {
-            if (err)
-                throw err;
-            return done(null, newUser);
-          });
-        }
-
-    });
-  }
-));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	 //        	user.save();
+		// 	  },
+		// 	  error: function(user, error) {
+		// 	    // The login failed. Check error to see why.
+		// 	  }
+		// 	});
+	 //    },
+	 //    error: function(result, error){
+	 //    	console.log('inside error');
+	 //      console.log(error);
+	 //    }
+  // 	});
 
 // console.log(config.port);
 
