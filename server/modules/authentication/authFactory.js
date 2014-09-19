@@ -1,9 +1,13 @@
 var passport = require('passport'),
 	User = require('../../models/user');
+  Parse = require('parse').Parse;
+
+  // Parse.initialize('sNUJR4kRaArwjeBtlkdcdSm5cmDYeHidBQIyIYVt', 'LnV5YM6ZtvYZ7nrI2tx58IN8ABWTb67KgUJADAef');
+
 
 
 require('./authLocalConfiguration')(passport);
-require('./twitterConfiguration')(passport);
+require('./twitterConfiguration')(passport, Parse);
 
 
 var signIn = function(req, res, next){
