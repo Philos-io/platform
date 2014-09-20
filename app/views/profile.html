@@ -132,15 +132,29 @@
 					
 					<div class="clear"></div>
 
+					<hr>
+
 	                <div class="left" ng-show="user.twitter">
-	                    <label for="twitter">Twitter account</label>
-	                    <div class="field medium_field">
-	                    	<span ng-bind="user.twitter"></span>
-	                    </div>
+                    	<div class="button_twitter">
+							<a ng-click="unlinkTwitter()">Unlink your Twitter</a>
+						</div>
+	                </div>
+
+	                <div class="left" ng-show="user.github">
+                    	<div class="button_git">
+							<a ng-click="unlinkGithub()">Unlink your Github</a>
+						</div>
+	                </div>
+
+	                <div class="left" ng-show="user.linkedin">
+                    	<div class="button_linkedin">
+							<a ng-click="unlinkLinkedIn()">Unlink your linkedIn</a>
+						</div>
 	                </div>
 
 	                <div class="clear"></div>
 					
+
 	                <div class="left" ng-show="user.github">
 	                    <label for="github">Github account</label>
 	                    <div class="field medium_field">

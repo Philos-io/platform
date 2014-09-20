@@ -27,10 +27,7 @@
 
 		function success(user) {
 			// Set the current user object
-			var currentUser = user;
-			currentUser.picture = 'images/no_avatar.png';
-
-			$rootScope.currentUser = currentUser;
+			$rootScope.currentUser = user;
 
 			$rootScope.auth = false;
 			// then redirect the user to the trainings page

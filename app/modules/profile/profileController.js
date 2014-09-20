@@ -2,33 +2,40 @@
 	'use strict';
 
 
-	function ProfileController($scope, $document, $rootScope){
+	function ProfileController($scope, $document, $rootScope, profileFactory){
 
 		$document.scrollTop(0, 0);
 
-		//User objedt
-		$scope.user = {
-			firstname: 'Davy',
-			lastname: 'Engone',
-			email: 'davy@philos.io',
-			password: 'getbetter2',
-			mobile: '+32488790802',
-			address1: 'Dorpsplein 7/2',
-			postalcode: '3080',
-			city: 'Tervuren',
-			companyOrSchool: 'Philos.io',
-			jobTitle: 'Software Engineer',
-			linkedIn: '',
-			twitter: '',
-			github: ''
-		};
+		//User object
+		profileFactory.getUser(true).then(function(user){
+			debugger;
+			$scope.user = user;
+			$rootScope.currentUser = user;
+			$scope.apply();
+		}); 
+
+		// {
+		// 	firstname: 'Davy',
+		// 	lastname: 'Engone',
+		// 	email: 'davy@philos.io',
+		// 	password: '',
+		// 	mobile: '+32488790802',
+		// 	address1: 'Dorpsplein 7/2',
+		// 	postalcode: '3080',
+		// 	city: 'Tervuren',
+		// 	companyOrSchool: 'Philos.io',
+		// 	jobTitle: 'Software Engineer',
+		// 	linkedIn: '',
+		// 	twitter: '',
+		// 	github: ''
+		// };
 
 		$scope.isEditMode = false;
 		$scope.showSession = false;
 
 		$scope.enableSocialMedia = function(){
 			var user = $scope.user;
-			return !(user.github && user.linkedIn && user.twitter);
+			return !(user && user.github && user.linkedIn && user.twitter);
 		};
 
 		$scope.sessions = function(){
@@ -43,11 +50,27 @@
 		$scope.update = function(){
 			$scope.isEditMode = false;
 			$document.scrollTop(0, 0);
-		}
+		};
+
+		$scope.unlinkTwitter = function(){
+			throw 'now implemented yet!'
+		};
+
+		$scope.unlinkGithub = function(){
+			throw 'now implemented yet!'
+		};
+
+		$scope.unlinkLinkedIn = function(){
+			throw 'now implemented yet!'
+		};
 	}	
 
 	angular.module('profile')
-		.controller('ProfileController', ['$scope', '$document', '$scope', ProfileController])
+		.controller('ProfileController', [
+			'$scope', 
+			'$document', 
+			'$scope', 
+			'profileFactory', ProfileController])
 		.directive('changemode', function(){
 			return {
 				restrict:'A',
@@ -63,5 +86,4 @@
 				}
 			}
 		});
-
 })();

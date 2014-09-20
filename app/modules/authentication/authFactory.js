@@ -71,9 +71,7 @@
 			signUp: signUp,
 			logout: logout,
 			forgot: forgotPassword
-		}
-		
-	}
+		}}
 
 	angular.module('authentication').factory('authFactory', ['$q', authFactory]);
 

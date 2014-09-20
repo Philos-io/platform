@@ -12,7 +12,7 @@
       $rootScope.currentUser = current.attributes;
 
       // TODO: Remove this once the user will be able to add his own picture
-      $rootScope.currentUser.picture = 'images/no_avatar.png';
+      $rootScope.currentUser.picture = current.picture || 'images/no_avatar.png';
 
       // Set the current user constant
       CurrentUser = $rootScope.currentUser;
