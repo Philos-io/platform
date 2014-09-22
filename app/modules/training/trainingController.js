@@ -8,20 +8,20 @@
 	function TrainingController($scope, $window, CurrentUser, trainingFactory) {
 		
 
-		if ($window.localStorage && !$window.localStorage.trainings) {
-			debugger
-	      	trainingFactory.getAll().then(function(trainings){
-	        
-	        // set the trainings
-	        $scope.trainings = trainings;
+      	trainingFactory.getAll().then(function(trainings){
+        
+        	// set the trainings
+        	$scope.trainings = trainings;
 
-	        // Save that in the localstorage
-	        $window.localStorage.trainings = JSON.stringify(trainings);
-	      });
-	    }else{
-	    	// No need to make a round trip to the database, just get the trainings from the localstorage
-	      	$scope.trainings = JSON.parse($window.localStorage.trainings);
-	    }
+        	// Save that in the localstorage
+        	$window.localStorage.trainings = JSON.stringify(trainings);
+      	});
+	      	
+		// if ($window.localStorage && !$window.localStorage.trainings) {
+	 //    }else{
+	 //    	// No need to make a round trip to the database, just get the trainings from the localstorage
+	 //      	$scope.trainings = JSON.parse($window.localStorage.trainings);
+	 //    }
 	}
 
 	angular
