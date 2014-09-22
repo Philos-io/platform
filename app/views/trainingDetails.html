@@ -9,7 +9,7 @@
             <div class="clear"></div>
             
             <div class="col_desc right animated fadeIn">
-                <h2>Description of a crazy week: You're welcome</h2>
+                <h2>Description</h2>
                 <div class="description">
                     <div ng-repeat="desc in session.description">
                         <h3>{{desc.unit}}</h3>
@@ -28,7 +28,7 @@
                         <br/>
                         <h3>Schedule of the week:</h3>
                         <br/>
-                        <span class="open">Friday evening and Sunday afternoon are optional. A mentor will be around if needed!</span>
+                        <!-- <span class="open" ng-show="!session.corporate">Friday evening and Sunday afternoon are optional. A mentor will be around if needed!</span> -->
                         <ul ng-repeat="when in session.when">
                             <li ng-class="when.open? 'open': 'optional';">
                                 <span>{{when.day}} :</span class=""><span>{{when.time}}</span>
@@ -43,17 +43,17 @@
                         <br/>
                     </div>
                 </div>
-                <h2>Trainer/Mentor</h2>
-                <div class="profile_pic left">
-                    <img ng-src="{{session.mentor.picture}}" width="80" height="80" alt="profile">
+                <h2>Trainers/Mentors</h2>
+                <div ng-repeat="mentor in session.mentors">
+                    <div class="profile_pic left">
+                        <img ng-src="{{mentor.picture}}" width="80" height="80" alt="profile">
+                    </div>
+                    <br/>
+                    <div class="organizer_txt left">
+                        <h3>{{mentor.fullName}}, {{mentor.profession}} @ {{mentor.company}}</h3>
+                    </div>
+                    <div class="clear"></div>
                 </div>
-                <div class="organizer_txt left">
-                    <h3>{{session.mentor.fullName}}</h3>
-                    {{session.mentor.profession}} @
-                    {{session.mentor.company}}
-                <!-- <div class="organizer_activity">{{session.mentor.sessionAttented}} sessions attended / {{session.mentor.sessionOrganized}} sessions organized</div> -->
-                </div>
-                <div class="clear"></div>
             </div>
             
             <div class="col_action left animated fadeIn">
@@ -81,7 +81,7 @@
                 <div class="CTA_box">
                     <div class="attendies_number">{{session.numberAttendees}}/<strong>{{session.maxAttendees}}</strong> attendees</div>
                     <div class="CTA">
-                        <div class="price left"><span id="amount">{{session.cost}}</span><sup>&euro;/week</sup></div>
+                        <div class="price left"><span id="amount">{{session.cost}}</span><sup>&euro;</sup></div>
                         <div class="button_red right"><a ng-click="register()">I am in</a></div>
                         <div class="clear"></div>
                     </div>
