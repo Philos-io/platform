@@ -17,21 +17,24 @@
 		* Register for a training
 		*/
 		$scope.register = function (){
+
+			$location.url('https://ti.to/oneweekoneproject/nodejs/');
+
 			// if undefined redirect the user to the login page
-			if (!$rootScope.currentUser) {
-				$location.path('/signin');
-			}
+			// if (!$rootScope.currentUser) {
+			// 	$location.path('/signin');
+			// }
 
-			var currentUser = $rootScope.currentUser;
+			// var currentUser = $rootScope.currentUser;
 
-			if (!currentUser.sessions) {
-				currentUser.sessions = [];
-			}
+			// if (!currentUser.sessions) {
+			// 	currentUser.sessions = [];
+			// }
 
-			// Add the current session into the user upcoming sessions
-			currentUser.sessions.push($scope.session);
+			// // Add the current session into the user upcoming sessions
+			// currentUser.sessions.push($scope.session);
 
-			$location.path('/profile');
+			// $location.path('/profile');
 			// Redirect the user to eventbrite.com
 
 
