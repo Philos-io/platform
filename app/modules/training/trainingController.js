@@ -9,7 +9,8 @@
 		
 
 		if ($window.localStorage && !$window.localStorage.trainings) {
-	      trainingFactory.getAll().then(function(trainings){
+			debugger
+	      	trainingFactory.getAll().then(function(trainings){
 	        
 	        // set the trainings
 	        $scope.trainings = trainings;
