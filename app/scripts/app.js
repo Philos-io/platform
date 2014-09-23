@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function MainController($scope, $rootScope, $document, trainingFactory, $window, CurrentUser) {
+  function MainController($scope, $rootScope, $document, trainingFactory, $window, CurrentUser, $location) {
     var duration = 500, offset = 10;
     $scope.session = {};
     //$document.scrollTop(0, duration);
@@ -31,9 +31,16 @@
       $scope.session.all = JSON.parse($window.localStorage.trainings);
     }
 
-    $scope.goTo = function(section){
-      var trainings = angular.element(document.getElementById(section));
-      $document.scrollToElement(trainings, offset, duration);
+    $scope.goTo = function(el){
+
+      var section = document.getElementById(el);
+      debugger;
+      if (section) {
+          var position = angular.element(section);
+          $document.scrollToElement(position, offset, duration);
+      }else{
+          $location.path('#/'+el);
+      }
     };
   }
 
@@ -70,7 +77,15 @@
       
     })
     .config(['$routeProvider','$locationProvider', configuration])
-    .controller('MainController', ['$scope', '$rootScope', '$document', 'trainingFactory','$window', 'CurrentUser', MainController]);
+    .controller('MainController', [
+      '$scope', 
+      '$rootScope', 
+      '$document', 
+      'trainingFactory',
+      '$window', 
+      'CurrentUser', 
+      '$location',
+      MainController]);
 })();
 
 

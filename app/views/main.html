@@ -22,8 +22,14 @@
 
 <section id="trainings">
     <div id="training_wrapper">
-        <div class="big_text">
+        <!-- <div class="big_text">
                 List of <strong>One week, one project</strong> available in Belgium!
+        </div> -->
+        <div class="training_list">
+            <div class="toggle_trainings">
+                <div class="button_white_toggle_left_on">Regular trainings</div>
+                <div class="button_white_toggle_right_off"><a href="#2">Corporate trainings</a></div>
+            <div class="clear"></div>
         </div>
         <div class="training_list" ng-repeat="training in session.all | limitTo: 3">
             <div ng-class="training.attendees.length === training.maxAttendees? 'training_element_grey': 'training_element'">
@@ -49,16 +55,18 @@
             <div class="clear" ng-if="session.all.length - 1 === $index"></div>
         </div>
         
-        <!-- <div id="nothing_interesting">
+        <div id="nothing_interesting">
             <div class="big_text">
-                Nothing that interests you? What a pity!
+                Nothing that interests you above?<br/><br/>
+
+            <div class="button_light center" style="width:380px;"><a href="#/trainings">Explore all our trainings</a></div>
             </div>
-            <div class="button_light center" style="width:300px;"><a href="#2">Suggest a training</a></div>
-        </div> -->
+        </div>
+        
     </div>
 </section>
 
-<section id="team">
+<section id="about">
     <div id="team_wrapper">
         <div id="team_box">
             <h1>About Philos</h1>
@@ -74,7 +82,8 @@
             Does your company need a blue ship trainings on the latest web technologies? We have the solution with our corporate trainings! You can either send your entire team at our Hacker Dojo or we can send our mentors on-site in your company.
             </p>
             <div class="button_stroke center" style="width:340px;"><a href="https://twitter.com/philos_io">Follow us on twitter</a></div>
-          <div class="team_box_separation"></div>
+          
+            <div class="team_box_separation" id="team"></div>
           
           
             <h1>The team</h1>
