@@ -15,12 +15,32 @@
 .training_list{
 	width:960px;
 	margin:auto;
+	/*display: inline-block;
+	margin-bottom: 25px;*/
+}
+
+#footer{
+	background-color: #ff4c27;
+/* width: 100%; */
+/* padding-top: 20px; */
+ 	height: 20px; 
+/* margin: auto; */
+	color: #fff;	
+/* font-family: 'Raleway', sans-serif; */
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 22px;
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 
 .training_element{
 	height: 475px;
 	width: 300px;
-	margin: 10px;
+	margin: 0px 10px 40px;
 	background-color: #fff;
 	display: inline-block;
 	float: left;

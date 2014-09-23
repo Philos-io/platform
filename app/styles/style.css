@@ -95,8 +95,8 @@ input{
 .big_text{
 	width:960px;
 	margin:auto;
-	margin-bottom:50px;
-	margin-top:50px;
+	margin-bottom:25px;
+	margin-top:25px;
 }
 
 #head{
@@ -675,7 +675,7 @@ input{
 	color:#fff;
 }
 
-#footer{
+/*#footer{
 	background-color:#ff4c27;
 	width:100%;
 	padding-top:20px;
@@ -687,7 +687,7 @@ input{
 	font-weight:400;
 	line-height:22px;
 	text-align:center;
-}
+}*/
 
 #footer a{
 	color:#fff;
