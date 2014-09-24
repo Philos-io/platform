@@ -1,7 +1,7 @@
 <section id="home">
     <div id="presentation">
             <div id="presentation_content">
-                <div class="animated fadeInDown">
+                <div class="animated fadeIn">
                     <h1>One week, one project</h1>
                     <p>
                         A set of tools, techniques, passion, help, mentorship, hard work, technologies and projects!
@@ -13,8 +13,8 @@
                 <br>
             <br>
 
-            <div class="button_light center animated fadeInUp" style="width:200px;">
-                <a ng-click="goTo('trainings')">Let's Start</a>
+            <div class="button_light center animated fadeInUpBig" style="width:200px;">
+                <a toggle-state="trainings">Let's Start</a>
             </div>
         </div>
     </div>
@@ -25,6 +25,12 @@
         <div class="big_text">
                 List of <strong>One week, one project</strong> available in Belgium!
         </div>
+        <!-- <div class="training_list">
+            <div class="toggle_trainings">
+                <div class="button_white_toggle_left_on" ng-click="toggle(false)">Regular trainings</div>
+                <div class="button_white_toggle_right_off"><a ng-click="toggle(true)">Corporate trainings</a></div>
+            <div class="clear"></div>
+        </div> -->
         <div class="training_list" ng-repeat="training in session.all | limitTo: 3">
             <div ng-class="training.attendees.length === training.maxAttendees? 'training_element_grey': 'training_element'">
                 <h1><a href="#/trainings/{{training.id}}">{{training.title}}</a></h1>
@@ -49,16 +55,18 @@
             <div class="clear" ng-if="session.all.length - 1 === $index"></div>
         </div>
         
-        <!-- <div id="nothing_interesting">
+        <div id="nothing_interesting">
             <div class="big_text">
-                Nothing that interests you? What a pity!
+                Nothing that interests you above?<br/><br/>
+
+            <div class="button_light center" style="width:380px;"><a href="#/trainings">Explore all our trainings</a></div>
             </div>
-            <div class="button_light center" style="width:300px;"><a href="#2">Suggest a training</a></div>
-        </div> -->
+        </div>
+        
     </div>
 </section>
 
-<section id="team">
+<section id="about">
     <div id="team_wrapper">
         <div id="team_box">
             <h1>About Philos</h1>
@@ -71,10 +79,11 @@
             From building mobile application in one week to designing advanced backend API, at our Hacker Dojo you will empower yourselft with new skills.
             <br/>
             <br/>
-            Does your company need a blue ship trainings on the latest web technologies? We have the solution with our corporate trainings! You can either send your entire team at our Hacker Dojo or we can send our mentors on-site in your company.
+            Does your company need a blue ship training on the latest web technologies? We have the solution with our corporate trainings! You can either send your entire team at our Hacker Dojo or we can send our mentors on-site in your company.
             </p>
             <div class="button_stroke center" style="width:340px;"><a href="https://twitter.com/philos_io">Follow us on twitter</a></div>
-          <div class="team_box_separation"></div>
+          
+            <div class="team_box_separation" id="team"></div>
           
           
             <h1>The team</h1>
@@ -86,24 +95,22 @@
                 <div class="email_adress"><a href="mailto:davy@philos.io">davy@philos.io</a></div>
                 <div class="twitter_handle"><a href="https://twitter.com/davyengone">@davyengone</a></div>
             </div>
-            
-            
+                
             <div class="team_element">
                 <img src="images/cyrille.jpg" width="300" height="305" alt="Cyrille Pasttorek">
                 <div class="position">CEO & Project Manager</div>
                 <div class="phone"><a href="tel:+324968173041">+32 (0) 496 81 73 04</a></div>
                 <div class="email_adress"><a href="mailto:cyrille@philos.io">cyrille@philos.io</a></div>
                 <div class="twitter_handle"><a style="width:140px;" href="https://twitter.com/cyrillepastorek">@cyrillepastorek</a></div>
-          </div>
-            
-            
-          <div class="team_element">
+            </div>
+                
+            <div class="team_element">
                 <img src="images/mehdi.jpg" width="300" height="305" alt="Mehdi Bouhjar">
                 <div class="position">COO & Art Director</div>
                 <div class="phone"><a href="tel:+32488790341">+32 (0) 479 91 98 67</a></div>
                 <div class="email_adress"><a href="mailto:mehdi@philos.io">mehdi@philos.io</a></div>
                 <div class="twitter_handle"><a href="https://twitter.com/mehdimitchel">@mehdimitchel</a></div>
-          </div>
+            </div>
             
             <div class="clear"></div>
         </div>

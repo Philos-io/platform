@@ -1,8 +1,8 @@
 (function() {
   'use strict';
 
-  function MainController($scope, $rootScope, $document, trainingFactory, $window, CurrentUser) {
-    var duration = 500, offset = 10;
+  function MainController($scope, $rootScope, $document, trainingFactory, $window, CurrentUser, $location) {
+    var duration = 500, offset = 10, sessions;
     $scope.session = {};
     //$document.scrollTop(0, duration);
 
@@ -24,16 +24,38 @@
 
     if ($window.localStorage && !$window.localStorage.trainings) {
       trainingFactory.getAll().then(function(trainings){
-        $scope.session.all = trainings;
+        sessions = $scope.session.all = trainings;
         $window.localStorage.trainings = JSON.stringify(trainings);
       });
     }else{
-      $scope.session.all = JSON.parse($window.localStorage.trainings);
+      sessions = $scope.session.all = JSON.parse($window.localStorage.trainings);
     }
 
-    $scope.goTo = function(section){
-      var trainings = angular.element(document.getElementById(section));
-      $document.scrollToElement(trainings, offset, duration);
+    $scope.goTo = function(el){
+
+      var section = document.getElementById(el);
+      debugger;
+      var position = angular.element(section);
+      $document.scrollToElement(position, offset, duration);
+      
+    };
+
+    // Managing corporate versus normal trainings
+    $scope.corporate = false;
+    $scope.toggle = function(corporate){
+
+      if ($scope.corporate === corporate) {
+        $scope.corporate = !corporate;
+        return;
+      }
+
+      $scope.session.all = [];
+      sessions.filter(function(session){
+        if (session.corporate === corporate) {
+          $scope.session.all.push(session);
+        }
+      });
+      //$scope.$apply();
     };
   }
 
@@ -70,7 +92,56 @@
       
     })
     .config(['$routeProvider','$locationProvider', configuration])
-    .controller('MainController', ['$scope', '$rootScope', '$document', 'trainingFactory','$window', 'CurrentUser', MainController]);
+    .controller('MainController', [
+      '$scope', 
+      '$rootScope', 
+      '$document', 
+      'trainingFactory',
+      '$window', 
+      'CurrentUser', 
+      '$location',
+      MainController])
+    .directive('toggleState', function($location, $document){
+      return{
+        restrict: 'A',
+        scope: {
+          id: '@toggleState'
+        },
+        link: function(scope, attrs, el){
+
+            el.$$element.click(function(evt){
+
+              var path = $location.path();
+              if (path !== '/') {
+                $location.path('/#'+scope.id);
+                return;
+              }
+
+              var $el = angular.element(el.$$element);
+
+              if ($el.hasClass('active')) return;
+
+              // Remove the active class on every menu!
+              angular.element(document.getElementsByClassName('menu')).removeClass('active');
+
+              if (scope.id === "trainings") {
+                angular.element(document.getElementById('menuTrainings')).addClass('active');
+              }else{
+                el.$addClass('active');
+              }
+
+              var section = document.getElementById(scope.id);
+
+              if (section) {
+                var position = angular.element(section);
+                $document.scrollToElement(position, 0, 500);
+              }else{
+                $location.path('/');
+              }
+            });
+        }
+      }
+    });
 })();
 
 

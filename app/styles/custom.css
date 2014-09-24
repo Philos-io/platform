@@ -349,3 +349,9 @@
 	border:0;
 	margin-top:1px;
 }
+
+.button_stroke_small a.active{
+	background-color:#27ffac;
+	border:#27ffac 2px solid;
+	color:#fff;
+}
