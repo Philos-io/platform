@@ -32,9 +32,7 @@
     }
 
     $scope.goTo = function(el){
-
       var section = document.getElementById(el);
-      debugger;
       var position = angular.element(section);
       $document.scrollToElement(position, offset, duration);
       
@@ -69,6 +67,49 @@
       .otherwise({redirectTo : '/'});
   }
 
+  function toggleState($location, $document){
+      return{
+        restrict: 'A',
+        scope: {
+          id: '@toggleState'
+        },
+        link: function(scope, attrs, el){
+
+          el.$$element.click(function(evt){
+
+            var path = $location.path();
+            if (path !== '/') {
+              $location.path('/#'+scope.id);
+              return;
+            }
+
+            var $el = angular.element(el.$$element);
+
+            if ($el.hasClass('active')) return;
+
+            // Remove the active class on every menu!
+            angular.element(document.getElementsByClassName('menu')).removeClass('active');
+
+            if (scope.id === "trainings") {
+              angular.element(document.getElementById('menuTrainings')).addClass('active');
+            }else{
+              el.$addClass('active');
+            }
+
+            var section = document.getElementById(scope.id);
+
+            if (section) {
+              var position = angular.element(section);
+              $document.scrollToElement(position, 0, 500);
+            }else{
+              $location.path('/');
+            }
+          });
+        }
+      }
+    }
+  
+
   angular
     .module('philosAngularApp', [
       'ngRoute',
@@ -88,8 +129,6 @@
       };
 
       Parse.initialize(keys.appID, keys.js);
-
-      
     })
     .config(['$routeProvider','$locationProvider', configuration])
     .controller('MainController', [
@@ -101,47 +140,7 @@
       'CurrentUser', 
       '$location',
       MainController])
-    .directive('toggleState', function($location, $document){
-      return{
-        restrict: 'A',
-        scope: {
-          id: '@toggleState'
-        },
-        link: function(scope, attrs, el){
-
-            el.$$element.click(function(evt){
-
-              var path = $location.path();
-              if (path !== '/') {
-                $location.path('/#'+scope.id);
-                return;
-              }
-
-              var $el = angular.element(el.$$element);
-
-              if ($el.hasClass('active')) return;
-
-              // Remove the active class on every menu!
-              angular.element(document.getElementsByClassName('menu')).removeClass('active');
-
-              if (scope.id === "trainings") {
-                angular.element(document.getElementById('menuTrainings')).addClass('active');
-              }else{
-                el.$addClass('active');
-              }
-
-              var section = document.getElementById(scope.id);
-
-              if (section) {
-                var position = angular.element(section);
-                $document.scrollToElement(position, 0, 500);
-              }else{
-                $location.path('/');
-              }
-            });
-        }
-      }
-    });
+    .directive('toggleState',['$location', '$document', toggleState]);
 })();
 
 
