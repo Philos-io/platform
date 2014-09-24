@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function MainController($scope, $rootScope, $document, trainingFactory, $window, CurrentUser, $location) {
+  function MainController($scope, $rootScope, $document, trainingFactory, $window, CurrentUser) {
     var duration = 500, offset = 10, sessions;
     $scope.session = {};
     //$document.scrollTop(0, duration);
@@ -65,9 +65,12 @@
         templateUrl: 'views/main.html'
       })
       .otherwise({redirectTo : '/'});
+
+      // use the HTML5 History API
+    $locationProvider.html5Mode(true);
   }
 
-  function toggleState($location, $document){
+  function toggleState($location, $document, $rootScope){
       return{
         restrict: 'A',
         scope: {
@@ -77,9 +80,15 @@
 
           el.$$element.click(function(evt){
 
-            var path = $location.path();
+            var path  = $location.path();
+            
             if (path !== '/') {
-              $location.path('/#'+scope.id);
+              $rootScope.$apply(function() {
+                debugger;
+                var test = path;
+
+                $location.path(path);
+              });
               return;
             }
 
@@ -137,10 +146,9 @@
       '$document', 
       'trainingFactory',
       '$window', 
-      'CurrentUser', 
-      '$location',
+      'CurrentUser',
       MainController])
-    .directive('toggleState',['$location', '$document', toggleState]);
+    .directive('toggleState',['$location', '$document', '$rootScope', toggleState]);
 })();
 
 
