@@ -2,7 +2,7 @@
   'use strict';
 
   function MainController($scope, $rootScope, $document, trainingFactory, $window, CurrentUser, $location) {
-    var duration = 500, offset = 10;
+    var duration = 500, offset = 10, sessions;
     $scope.session = {};
     //$document.scrollTop(0, duration);
 
@@ -24,23 +24,41 @@
 
     if ($window.localStorage && !$window.localStorage.trainings) {
       trainingFactory.getAll().then(function(trainings){
-        $scope.session.all = trainings;
+        sessions = $scope.session.all = trainings;
         $window.localStorage.trainings = JSON.stringify(trainings);
       });
     }else{
-      $scope.session.all = JSON.parse($window.localStorage.trainings);
+      sessions = $scope.session.all = JSON.parse($window.localStorage.trainings);
     }
 
     $scope.goTo = function(el){
 
       var section = document.getElementById(el);
-      debugger;
+      //debugger;
       if (section) {
           var position = angular.element(section);
           $document.scrollToElement(position, offset, duration);
       }else{
           $location.path('#/'+el);
       }
+    };
+
+    // Managing corporate versus normal trainings
+    $scope.corporate = false;
+    $scope.toggle = function(corporate){
+
+      if ($scope.corporate === corporate) {
+        $scope.corporate = !corporate;
+        return;
+      }
+
+      $scope.session.all = [];
+      sessions.filter(function(session){
+        if (session.corporate === corporate) {
+          $scope.session.all.push(session);
+        }
+      });
+      //$scope.$apply();
     };
   }
 

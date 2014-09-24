@@ -5,8 +5,9 @@
 (function(){
 'use strict';
 	
-	function TrainingController($scope, $window, CurrentUser, trainingFactory) {
+	function TrainingController($scope, $window, $document, CurrentUser, trainingFactory) {
 		
+		$document.scrollTop(0, 0);
 
       	trainingFactory.getAll().then(function(trainings){
         
@@ -29,6 +30,7 @@
 		.controller('TrainingController', [
 				'$scope',
 				'$window',
+				'$document',
 				'CurrentUser',
 				'trainingFactory',
 				TrainingController
