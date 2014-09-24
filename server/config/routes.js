@@ -3,4 +3,8 @@
 */
 module.exports = function(app, passport) {
 	require('../modules/authentication/authRoutes')(app, passport);
+
+	app.get('*', function(req, res, next){
+		res.redirect('/');
+	});
 }

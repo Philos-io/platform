@@ -5,9 +5,9 @@
         </div>
         <div class="training_list animated fadeInUpSmall" ng-repeat="training in trainings">
             <div ng-class="training.attendees.length === training.maxAttendees? 'training_element_grey': 'training_element'">
-                <h1><a href="#/trainings/{{training.id}}">{{training.title}}</a></h1>
+                <h1><a href="#/one-week-one-project/{{training.id}}">{{training.title}}</a></h1>
                 <span class="date">{{training.date}} in <strong>{{training.location.city}}</strong></span>
-                <a href="#/trainings/{{training.id}}"><img ng-src="{{training.image}}" width="300" height="120" alt="{{training.title}}"></a>
+                <a href="#/one-week-one-project/{{training.id}}"><img ng-src="{{training.image}}" width="300" height="120" alt="{{training.title}}"></a>
                 <div class="tags_bloc">
                     <div class="tag" ng-repeat="tag in training.tags | limitTo: 3 ">
                         <a>{{tag}}</a>
@@ -20,7 +20,7 @@
                     {{training.pace}}
                 </div>
                 <div class="cta"><a href="#/trainings/{{training.id}}">{{training.attendees.length}}<strong>/{{training.maxAttendees}} attendees</strong></a></div>
-                <div class="more_details"><a href="#/trainings/{{training.id}}"></a></div>
+                <div class="more_details"><a href="#/one-week-one-project/{{training.id}}"></a></div>
                 <div class="clear"></div>
             </div>
             
