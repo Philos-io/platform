@@ -49,9 +49,10 @@
 		/*
 		* Get a training session by its id
 		*/
-		function getTrainingById(id){
+		function getTrainingById(url){
 			return JSON.parse($window.localStorage.trainings || getAll()).filter(function(session) {
-				return session.id === id;
+				debugger;
+				return session.url === url;
 			});
 		}
 

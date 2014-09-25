@@ -6,8 +6,8 @@
 'use strict';
 	
 	function TrainingDetailsController($scope, $routeParams, trainingFactory, $location, $document, $window, $rootScope, CurrentUser) {
-
-		$scope.session = trainingFactory.getTrainingById($routeParams.training_id)[0];
+		
+		$scope.session = trainingFactory.getTrainingById($routeParams.url)[0];
 
 		$document.scrollTop(0, 0);
 

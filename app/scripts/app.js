@@ -21,15 +21,17 @@
     // Show the login button only if the current user in undefined!!
     $rootScope.displayLogin = !Parse.User.current();
 
+    trainingFactory.getAll().then(function(trainings){
+      sessions = $scope.session.all = trainings;
+      $window.localStorage.trainings = JSON.stringify(trainings);
+    });
+    
+    // if ($window.localStorage && !$window.localStorage.trainings) {
 
-    if ($window.localStorage && !$window.localStorage.trainings) {
-      trainingFactory.getAll().then(function(trainings){
-        sessions = $scope.session.all = trainings;
-        $window.localStorage.trainings = JSON.stringify(trainings);
-      });
-    }else{
-      sessions = $scope.session.all = JSON.parse($window.localStorage.trainings);
-    }
+
+    // }else{
+    //   sessions = $scope.session.all = JSON.parse($window.localStorage.trainings);
+    // }
 
     $scope.goTo = function(el){
       var section = document.getElementById(el);

@@ -11,7 +11,7 @@
 		      	controller: 'TrainingController',
 				templateUrl: 'views/trainings.html'
 		    })
-		    .when('/one-week-one-project/:training_id', {
+		    .when('/one-week-one-project/:url', {
 		      	controller: 'TrainingDetailsController',
 				templateUrl: 'views/trainingDetails.html'
 		    });
