@@ -7,11 +7,11 @@
 
 	function configuration($routeProvider) {
 		$routeProvider
-			.when('/trainings', {
+			.when('/one-week-one-project', {
 		      	controller: 'TrainingController',
 				templateUrl: 'views/trainings.html'
 		    })
-		    .when('/trainings/:training_id', {
+		    .when('/one-week-one-project/:url', {
 		      	controller: 'TrainingDetailsController',
 				templateUrl: 'views/trainingDetails.html'
 		    });

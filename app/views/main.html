@@ -13,7 +13,7 @@
                 <br>
             <br>
 
-            <div class="button_light center animated fadeInUpBig" style="width:200px;">
+            <div class="button_light center animated tada" style="width:200px;">
                 <a toggle-state="trainings">Let's Start</a>
             </div>
         </div>
@@ -33,9 +33,9 @@
         </div> -->
         <div class="training_list" ng-repeat="training in session.all | limitTo: 3">
             <div ng-class="training.attendees.length === training.maxAttendees? 'training_element_grey': 'training_element'">
-                <h1><a href="#/trainings/{{training.id}}">{{training.title}}</a></h1>
+                <h1><a href="#/one-week-one-project/{{training.url}}">{{training.title}}</a></h1>
                 <span class="date">{{training.date}} in <strong>{{training.location.city}}</strong></span>
-                <a href="#/trainings/{{training.id}}"><img ng-src="{{training.image}}" width="300" height="120" alt="{{training.title}}"></a>
+                <a href="#/one-week-one-project/{{training.url}}"><img ng-src="{{training.image}}" width="300" height="120" alt="{{training.url}}"></a>
                 <div class="tags_bloc">
                     <div class="tag" ng-repeat="tag in training.tags ">
                         <a>{{tag}}</a>
@@ -47,8 +47,8 @@
                 <div class="intensity">
                     {{training.pace}}
                 </div>
-                <div class="cta"><a href="#/trainings/{{training.id}}">{{training.attendees.length}}<strong>/{{training.maxAttendees}} attendees</strong></a></div>
-                <div class="more_details"><a href="#/trainings/{{training.id}}"></a></div>
+                <div class="cta"><a href="#/one-week-one-project/{{training.url}}">{{training.attendees.length}}<strong>/{{training.maxAttendees}} attendees</strong></a></div>
+                <div class="more_details"><a href="#/one-week-one-project/{{training.url}}"></a></div>
                 <div class="clear"></div>
             </div>
             
@@ -59,7 +59,7 @@
             <div class="big_text">
                 Nothing that interests you above?<br/><br/>
 
-            <div class="button_light center" style="width:380px;"><a href="#/trainings">Explore all our trainings</a></div>
+            <div class="button_light center" style="width:380px;"><a href="#/one-week-one-project">Explore all our trainings</a></div>
             </div>
         </div>
         
@@ -73,13 +73,13 @@
             <p>Philos.io is built behind an unique concept: Training and mentoring people on a technology by building together an application in <strong>One Week</strong>.
             <br/>
             <br/>
-            The web and internet are our playgrounds and we want to help you take part to the game as well! So by joining our blue ship trainings you will be able to build amazing things. From one week to another you will be able to change you career or simply change the way you approach your daily tasks!
+            The <strong>web and internet are our playgrounds</strong> and we want to help you take part to the game as well! So by joining our <strong>blue ship trainings</strong> you will be able to build amazing things. From one week to another you will be able to change you career or simply change the way you approach your <strong>daily tasks</strong>!
             <br/>
             <br/>
-            From building mobile application in one week to designing advanced backend API, at our Hacker Dojo you will empower yourselft with new skills.
+            From building mobile application in one week to designing advanced backend API, at our <strong>Hacker Dojo</strong> you will empower yourselft with <strong>new skills</strong>.
             <br/>
             <br/>
-            Does your company need a blue ship training on the latest web technologies? We have the solution with our corporate trainings! You can either send your entire team at our Hacker Dojo or we can send our mentors on-site in your company.
+            Does your company need a <strong>blue ship training</strong> on the latest web technologies? We have the solution with our corporate trainings! You can either send your entire team at our Hacker Dojo or we can send our mentors on-site in your company.
             </p>
             <div class="button_stroke center" style="width:340px;"><a href="https://twitter.com/philos_io">Follow us on twitter</a></div>
           

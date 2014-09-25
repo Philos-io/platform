@@ -7,7 +7,11 @@
 	
 	function TrainingController($scope, $window, $document, CurrentUser, trainingFactory) {
 		
-		$document.scrollTop(0, 0);
+		
+
+		$document.scrollTop(0, 0, function(){
+			alert('data');	
+		});
 
       	trainingFactory.getAll().then(function(trainings){
         
