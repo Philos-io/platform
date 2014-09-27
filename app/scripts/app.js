@@ -86,7 +86,6 @@
             
             if (path !== '/') {
               $rootScope.$apply(function() {
-                debugger;
                 var test = path;
 
                 $location.path(path);
