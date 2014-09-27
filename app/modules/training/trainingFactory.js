@@ -51,7 +51,6 @@
 		*/
 		function getTrainingById(url){
 			return JSON.parse($window.localStorage.trainings || getAll()).filter(function(session) {
-				debugger;
 				return session.url === url;
 			});
 		}
