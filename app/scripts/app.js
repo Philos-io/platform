@@ -42,6 +42,14 @@
         controller: 'MainController',
         templateUrl: 'views/main.html'
       })
+      .when('/about', {
+        controller: 'MainController',
+        templateUrl: 'views/about.html'
+      })
+      .when('/team', {
+        controller: 'MainController',
+        templateUrl: 'views/team.html'
+      })
       .otherwise({redirectTo : '/'});
 
       // use the HTML5 History API
@@ -93,9 +101,33 @@
           });
         }
       }
-    }
-  
+  }
 
+  function scrollTo($location, $anchorScroll) {
+
+      return {
+        link: function(scope, element, attrs, ctrl){
+          element.bind('click', function (e){
+            e.stopPropagation();
+
+            var off = scope.$on('$locationChangeStart', function(e){
+              off();
+              e.preventDefault();
+            });
+
+            var location = attrs.scrollTo;
+            var section = document.getElementById(location);
+            var position = angular.element(section);
+            $location.hash(location);
+            $document.scrollToElement(position, 0, 500);
+            //$anchorScroll();
+          });
+        }
+      }
+  }
+      
+  
+  
   angular
     .module('philosAngularApp', [
       'ngRoute',
@@ -125,7 +157,8 @@
       '$window', 
       'CurrentUser',
       MainController])
-    .directive('toggleState',['$location', '$document', '$rootScope', toggleState]);
+    .directive('toggleState',['$location', '$document', '$rootScope', toggleState])
+    .directive('scrollTo', ['$location', '$anchorScroll', scrollTo]);
 })();
 
 
