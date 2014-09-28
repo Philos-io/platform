@@ -9,15 +9,29 @@
 	/*
 	*  TrainingFactory constructor
 	*/
-	function trainingFactory($resource, $q, $window) {
+	function trainingFactory($http, $q, $window) {
 
+		/*
+		*  Public API: get all data either from the server or from the localstorage
+		*/
+		function getAll(){
+			var trainings = getAllFromLocalStorage();
+
+			if (trainings) {
+				var defer = $q.defer();
+
+				defer.resolve(trainings);
+
+				return defer.promise;
+			}
+
+			return getAllFromServer();
+		}
 		/*
 		* Get all the training sessions!!
 		*/
-		function getAll(){
-			// var trainings  = $resource("https://api.parse.com/1/classes/Training/1hN9ZYc3XW").get();
+		function getAllFromServer(){
 			var defer = $q.defer();
-
 
 			var TrainingCollection = Parse.Collection.extend({
 				model: Parse.Object.extend('Training')
@@ -35,6 +49,9 @@
 			  		trainings.push(training);
 			  	});
 
+			  	// Add to localstorage
+			  	addAllToLocalStorage(trainings);
+
 			  	defer.resolve(trainings);
 			  },
 			  error: function(collection, error) {
@@ -47,10 +64,27 @@
 		}
 
 		/*
+		* Private: Get data from localstorage
+		*/
+		function getAllFromLocalStorage(){
+			if ($window.localStorage && $window.localStorage.trainings)
+				return JSON.parse($window.localStorage.trainings); 
+		}
+
+		/*
+		* Private: Add trainings to localstorage
+		*/
+		function addAllToLocalStorage(trainings){	
+			if ($window.localStorage)
+				$window.localStorage.trainings = JSON.stringify(trainings);
+		}
+
+		/*
 		* Get a training session by its id
 		*/
 		function getTrainingById(url){
-			return JSON.parse($window.localStorage.trainings || getAll()).filter(function(session) {
+			// will mostly get the data from localStorage
+			return getAllFromLocalStorage().filter(function(session) {
 				return session.url === url;
 			});
 		}
@@ -63,7 +97,7 @@
 		
 	}
 
-	angular.module('philosAngularApp').factory('trainingFactory', ['$resource', '$q', '$window', trainingFactory]);
+	angular.module('philosAngularApp').factory('trainingFactory', ['$http', '$q', '$window', trainingFactory]);
 
 })();
 

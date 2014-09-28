@@ -6,32 +6,9 @@
     $scope.session = {};
     //$document.scrollTop(0, duration);
 
-    // set the current user to the Parse.User.current()
-    var current = Parse.User.current();
-    if(current) {
-      $rootScope.currentUser = current.attributes;
-
-      // TODO: Remove this once the user will be able to add his own picture
-      $rootScope.currentUser.picture = current.picture || 'images/no_avatar.png';
-
-      // Set the current user constant
-      CurrentUser = $rootScope.currentUser;
-    }
-
-    // Show the login button only if the current user in undefined!!
-    $rootScope.displayLogin = !Parse.User.current();
-
     trainingFactory.getAll().then(function(trainings){
       sessions = $scope.session.all = trainings;
-      $window.localStorage.trainings = JSON.stringify(trainings);
     });
-    
-    // if ($window.localStorage && !$window.localStorage.trainings) {
-
-
-    // }else{
-    //   sessions = $scope.session.all = JSON.parse($window.localStorage.trainings);
-    // }
 
     $scope.goTo = function(el){
       var section = document.getElementById(el);
@@ -55,7 +32,6 @@
           $scope.session.all.push(session);
         }
       });
-      //$scope.$apply();
     };
   }
 
