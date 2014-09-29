@@ -19,19 +19,12 @@
                 <div class="intensity">
                     {{training.pace}}
                 </div>
-                <div class="cta"><a href="#/trainings/{{training.url}}">{{training.attendees.length}}<strong>/{{training.maxAttendees}} attendees</strong></a></div>
+                <div class="cta"><a href="#/one-week-one-project/{{training.url}}">{{training.attendees.length}}<strong>/{{training.maxAttendees}} attendees</strong></a></div>
                 <div class="more_details"><a href="#/one-week-one-project/{{training.url}}"></a></div>
                 <div class="clear"></div>
             </div>
             
             <div class="clear" ng-if="session.all.length - 1 === $index"></div>
         </div>
-        
-        <!-- <div id="nothing_interesting">
-            <div class="big_text">
-                Nothing that interests you? What a pity!
-            </div>
-            <div class="button_light center" style="width:300px;"><a href="#2">Suggest a training</a></div>
-        </div> -->
     </div>
 </section>
