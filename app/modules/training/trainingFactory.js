@@ -84,9 +84,14 @@
 		*/
 		function getTrainingById(url){
 			// will mostly get the data from localStorage
-			return getAllFromLocalStorage().filter(function(session) {
-				return session.url === url;
-			});
+			var trainings = getAllFromLocalStorage(), current;
+			if (trainings) {
+				return trainings.filter(function(session) {
+					return session.url === url;
+				});
+			}
+
+			return null;
 		}
 
 			
