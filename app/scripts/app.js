@@ -2,7 +2,7 @@
   'use strict';
 
   function MainController($scope, $rootScope, $document, trainingFactory, $window, CurrentUser) {
-    var duration = 500, offset = 10, sessions;
+    var duration = 500, offset = 30, sessions;
     $scope.session = {};
     //$document.scrollTop(0, duration);
 
@@ -51,9 +51,6 @@
         templateUrl: 'views/team.html'
       })
       .otherwise({redirectTo : '/'});
-
-      // use the HTML5 History API
-      //$locationProvider.html5Mode(true);
   }
 
   function toggleState($location, $document, $rootScope){
@@ -64,18 +61,16 @@
         },
         link: function(scope, attrs, el){
 
+          var path = $location.path();
+
+          if (path !== '/' && path.substr(1, path.length) === scope.id) {
+            angular.element(document.getElementsByClassName('menu')).removeClass('active');
+
+            el.$addClass('active');
+          } 
+        
+
           el.$$element.click(function(evt){
-
-            var path  = $location.path();
-            
-            if (path !== '/') {
-              $rootScope.$apply(function() {
-                var test = path;
-
-                $location.path(path);
-              });
-              return;
-            }
 
             var $el = angular.element(el.$$element);
 
@@ -84,50 +79,39 @@
             // Remove the active class on every menu!
             angular.element(document.getElementsByClassName('menu')).removeClass('active');
 
-            if (scope.id === "trainings") {
-              angular.element(document.getElementById('menuTrainings')).addClass('active');
-            }else{
-              el.$addClass('active');
-            }
-
-            var section = document.getElementById(scope.id);
-
-            if (section) {
-              var position = angular.element(section);
-              $document.scrollToElement(position, 0, 500);
-            }else{
-              $location.path('/');
-            }
+            el.$addClass('active');
           });
         }
       }
   }
 
-  function scrollTo($location, $anchorScroll) {
+  function scrollTo($location, $document) {
 
       return {
         link: function(scope, element, attrs, ctrl){
           element.bind('click', function (e){
-            e.stopPropagation();
-
-            var off = scope.$on('$locationChangeStart', function(e){
-              off();
-              e.preventDefault();
-            });
+            debugger;
 
             var location = attrs.scrollTo;
             var section = document.getElementById(location);
             var position = angular.element(section);
-            $location.hash(location);
             $document.scrollToElement(position, 0, 500);
-            //$anchorScroll();
+            
           });
         }
       }
   }
-      
-  
-  
+
+  function run(){
+    var keys = {
+      js: 'LnV5YM6ZtvYZ7nrI2tx58IN8ABWTb67KgUJADAef',
+      appID :'sNUJR4kRaArwjeBtlkdcdSm5cmDYeHidBQIyIYVt',
+      server: 'F3JxL62hhpsnYK16oTg0R3A6SUdeQ6SLZmlWgSgQ',
+      client: 'GZIN8ZcKwlmcJe4Y8B14a2J17iFasnzQfAw8vZhX'
+    };
+    Parse.initialize(keys.appID, keys.js);
+  }
+    
   angular
     .module('philosAngularApp', [
       'ngRoute',
@@ -138,17 +122,8 @@
       'profile',
       'cart'
       ])
-    .run(function(){
-      var keys = {
-        js: 'LnV5YM6ZtvYZ7nrI2tx58IN8ABWTb67KgUJADAef',
-        appID :'sNUJR4kRaArwjeBtlkdcdSm5cmDYeHidBQIyIYVt',
-        server: 'F3JxL62hhpsnYK16oTg0R3A6SUdeQ6SLZmlWgSgQ',
-        client: 'GZIN8ZcKwlmcJe4Y8B14a2J17iFasnzQfAw8vZhX'
-      };
-
-      Parse.initialize(keys.appID, keys.js);
-    })
-    .config(['$routeProvider','$locationProvider', configuration])
+    .run(run)
+    .config(['$routeProvider','$locationProvider','$compileProvider', configuration])
     .controller('MainController', [
       '$scope', 
       '$rootScope', 

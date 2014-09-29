@@ -14,7 +14,7 @@
             <br>
 
             <div class="button_light center animated fadeInUp" style="width:200px;">
-                <a toggle-state="trainings">Let's Start</a>
+                <a ng-click="goTo('trainings')">Let's Start</a>
             </div>
         </div>
     </div>
@@ -22,15 +22,6 @@
 
 <section id="trainings">
     <div id="training_wrapper">
-        <div class="big_text">
-                List of <strong>One week, one project</strong> available in Belgium!
-        </div>
-        <!-- <div class="training_list">
-            <div class="toggle_trainings">
-                <div class="button_white_toggle_left_on" ng-click="toggle(false)">Regular trainings</div>
-                <div class="button_white_toggle_right_off"><a ng-click="toggle(true)">Corporate trainings</a></div>
-            <div class="clear"></div>
-        </div> -->
         <div class="training_list" ng-repeat="training in session.all | limitTo: 3">
             <div ng-class="training.attendees.length === training.maxAttendees? 'training_element_grey': 'training_element'">
                 <h1><a href="#/one-week-one-project/{{training.url}}">{{training.title}}</a></h1>

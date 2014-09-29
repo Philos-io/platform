@@ -691,7 +691,7 @@ input{
 #nothing_interesting{
 	width:960px;
 	margin:auto;
-	border-top:1px #ff4c27 solid;
+	/*border-top:1px #ff4c27 solid;*/
 }
 
 #team_wrapper{
