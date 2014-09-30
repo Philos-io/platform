@@ -10,6 +10,7 @@
 		var session = trainingFactory.getTrainingById($routeParams.url);
 		if (session) {
 			$scope.session = session[0];
+			$scope.session.numberAttendees = $scope.session.attendees.length;
 		}else{
 			trainingFactory.getAll().then(function(trainings){
         		trainings.forEach(function(session) {
