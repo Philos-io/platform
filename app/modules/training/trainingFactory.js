@@ -18,11 +18,27 @@
 			var trainings = getAllFromLocalStorage();
 
 			if (trainings) {
-				var defer = $q.defer();
 
-				defer.resolve(trainings);
+				var upToDate = true;
 
-				return defer.promise;
+				trainings.forEach(function(training){
+					if (training.updatedAt) {
+						var since = moment(training.updatedAt).fromNow();
+						
+						if(since.split(' ')[0] > 2){
+							upToDate = false;
+						}
+						
+					}else{
+						upToDate = false;
+					}
+				});
+
+				if (upToDate) {
+					var defer = $q.defer();
+					defer.resolve(trainings);
+					return defer.promise;
+				}
 			}
 
 			return getAllFromServer();
@@ -46,6 +62,7 @@
 			  	collection.forEach(function(item){
 			  		var training = item.attributes;
 			  		training.id = item.id;
+			  		training.updatedAt = new Date();
 			  		trainings.push(training);
 			  	});
 
@@ -75,8 +92,9 @@
 		* Private: Add trainings to localstorage
 		*/
 		function addAllToLocalStorage(trainings){	
-			if ($window.localStorage)
+ 			if ($window.localStorage) {
 				$window.localStorage.trainings = JSON.stringify(trainings);
+			}
 		}
 
 		/*
@@ -103,7 +121,6 @@
 	}
 
 	angular.module('philosAngularApp').factory('trainingFactory', ['$http', '$q', '$window', trainingFactory]);
-
 })();
 
 
