@@ -5,25 +5,36 @@
 (function(){
 'use strict';
 	
-	function TrainingController($scope, $window, $document, CurrentUser, trainingFactory) {
-		
+	function TrainingController($window, $document, CurrentUser, trainingFactory) {
+		var self = this;
 		$document.scrollTop(0, 0);
 
 		trainingFactory.getAll().then(function(trainings){
         	// set the trainings
-        	$scope.trainings = trainings;
+        	self.trainings = trainings;
       	});
+	}
+
+
+	function trainingDirective(){
+		return {
+			templateUrl: 'views/trainingDirective.tpl.html',
+			replace: true,
+			scope:{
+				vm: '=model'
+			}
+		}
 	}
 
 	angular
 		.module('training')
 		.controller('TrainingController', [
-				'$scope',
 				'$window',
 				'$document',
 				'CurrentUser',
 				'trainingFactory',
 				TrainingController
-			]);
+			])
+		.directive("training", trainingDirective);
 
 })();

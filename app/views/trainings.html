@@ -3,29 +3,10 @@
         <div class="big_text">
                 List of <strong>One week, one project</strong> available in Belgium!
         </div>
-        <div class="training_list animated fadeInUpSmall" ng-repeat="training in trainings">
-            <div ng-class="training.attendees.length === training.maxAttendees? 'training_element_grey': 'training_element'">
-                <h1><a href="#/one-week-one-project/{{training.url}}">{{training.title}}</a></h1>
-                <span class="date">{{training.date}} in <strong>{{training.location.city}}</strong></span>
-                <a href="#/one-week-one-project/{{training.url}}"><img ng-src="{{training.image}}" width="300" height="120" alt="{{training.title}}"></a>
-                <div class="tags_bloc">
-                    <div class="tag" ng-repeat="tag in training.tags | limitTo: 3 ">
-                        <a>{{tag}}</a>
-                    </div>
-                </div>
-                <div class="description">
-                    {{training.shortDescription}}
-                </div>
-                <div class="intensity">
-                    {{training.pace}}
-                </div>
-                <!-- {{training.attendees.length}}<strong>/{{training.maxAttendees}} attendees</strong> -->
-                <div class="cta"><a href="#/one-week-one-project/{{training.url}}"></a></div>
-                <div class="more_details"><a href="#/one-week-one-project/{{training.url}}"></a></div>
-                <div class="clear"></div>
-            </div>
+        <div class="training_list animated fadeInUpSmall" ng-repeat="vm in vm.trainings">
+            <training data-model="vm"></training>
             
-            <div class="clear" ng-if="session.all.length - 1 === $index"></div>
+            <div class="clear" ng-if="$last === $index"></div>
         </div>
     </div>
 </section>

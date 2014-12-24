@@ -1,16 +1,15 @@
 (function() {
   'use strict';
 
-  function MainController($scope, $rootScope, $document, trainingFactory, $window, CurrentUser) {
-    var duration = 500, offset = 30, sessions;
-    $scope.session = {};
-    //$document.scrollTop(0, duration);
+  function MainController($document, trainingFactory, $window, CurrentUser) {
+    var duration = 500, offset = 30, sessions, self = this;
+    self.session = {};
 
     trainingFactory.getAll().then(function(trainings){
-      sessions = $scope.session.all = trainings;
+      sessions = self.session.all = trainings;
     });
 
-    $scope.goTo = function(el){
+    self.goTo = function(el){
       var section = document.getElementById(el);
       var position = angular.element(section);
       $document.scrollToElement(position, offset, duration);
@@ -18,25 +17,25 @@
     };
 
     // Managing corporate versus normal trainings
-    $scope.corporate = false;
-    $scope.toggle = function(corporate){
+    self.corporate = false;
+    self.toggle = function(corporate){
 
-      if ($scope.corporate === corporate) {
-        $scope.corporate = !corporate;
+      if (self.corporate === corporate) {
+        self.corporate = !corporate;
         return;
       }
 
-      $scope.session.all = [];
+      self.session.all = [];
       sessions.filter(function(session){
         if (session.corporate === corporate) {
-          $scope.session.all.push(session);
+          self.session.all.push(session);
         }
       });
     };
   }
 
-  function configuration($routeProvider, $locationProvider){
-    //$locationProvider.html5Mode(true);
+  function configuration($routeProvider, $compileProvider){
+    $compileProvider.debugInfoEnabled(false);
     $routeProvider
       .when('/', {
         controller: 'MainController',
@@ -53,7 +52,7 @@
       .otherwise({redirectTo : '/'});
   }
 
-  function toggleState($location, $document, $rootScope){
+  function toggleState($location, $document){
       return{
         restrict: 'A',
         scope: {
@@ -86,20 +85,14 @@
   }
 
   function scrollTo($location, $document) {
-
-      return {
-        link: function(scope, element, attrs, ctrl){
-          element.bind('click', function (e){
-            debugger;
-
-            var location = attrs.scrollTo;
-            var section = document.getElementById(location);
-            var position = angular.element(section);
-            $document.scrollToElement(position, 0, 500);
-            
-          });
-        }
-      }
+    return function(scope, element, attrs, ctrl){
+      element.bind('click', function (e){
+        var location = attrs.scrollTo;
+        var section = document.getElementById(location);
+        var position = angular.element(section);
+        $document.scrollToElement(position, 0, 500);
+      });
+    }
   }
 
   function run(){
@@ -113,9 +106,8 @@
   }
     
   angular
-    .module('philosAngularApp', [
+    .module('philos', [
       'ngRoute',
-      'ngResource',
       'authentication',
       'training',
       'duScroll',
@@ -123,16 +115,14 @@
       'cart'
       ])
     .run(run)
-    .config(['$routeProvider','$locationProvider','$compileProvider', configuration])
+    .config(['$routeProvider','$compileProvider', configuration])
     .controller('MainController', [
-      '$scope', 
-      '$rootScope', 
       '$document', 
       'trainingFactory',
       '$window', 
       'CurrentUser',
       MainController])
-    .directive('toggleState',['$location', '$document', '$rootScope', toggleState])
+    .directive('toggleState',['$location', '$document', toggleState])
     .directive('scrollTo', ['$location', '$anchorScroll', scrollTo]);
 })();
 

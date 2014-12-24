@@ -1,0 +1,24 @@
+<div ng-class="vm.attendees.length === vm.maxAttendees? 'training_element_grey': 'training_element'">
+    <h1>
+        <a href="#/one-week-one-project/{{vm.url}}">{{vm.title}}</a>
+    </h1>
+    <span class="date">{{vm.date}} in <strong>{{vm.location.city}}</strong></span>
+    <a href="#/one-week-one-project/{{vm.url}}">
+        <img ng-src="{{vm.image}}" width="300" height="120" alt="{{vm.title}}">
+    </a>
+    <div class="tags_bloc">
+        <div class="tag" ng-repeat="tag in vm.tags | limitTo: 3 ">
+            <a>{{tag}}</a>
+        </div>
+    </div>
+    <div class="description">
+        {{vm.shortDescription}}
+    </div>
+    <div class="intensity">
+        {{vm.pace}}
+    </div>
+    <!-- {{vm.attendees.length}}<strong>/{{vm.maxAttendees}} attendees</strong> -->
+    <div class="cta"><a href="#/one-week-one-project/{{vm.url}}"></a></div>
+    <div class="more_details"><a href="#/one-week-one-project/{{vm.url}}"></a></div>
+    <div class="clear"></div>
+</div>

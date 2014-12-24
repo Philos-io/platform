@@ -3,7 +3,7 @@
         
         <div class="content">
             
-            <h1 class="animated fadeInDown">{{session.title}}</h1>
+            <h1 class="animated fadeInDown">{{vm.session.title}}</h1>
             <div class="back_link"><a href="#/one-week-one-project">back to the list</a></div>
             
             <div class="clear"></div>
@@ -11,7 +11,7 @@
             <div class="col_desc right animated fadeIn">
                 <h2>Description</h2>
                 <div class="description">
-                    <div ng-repeat="desc in session.description">
+                    <div ng-repeat="desc in vm.session.description">
                         <h3>{{desc.unit}}</h3>
                         <br>
                         <ul ng-repeat="topic in desc.topics">
@@ -22,14 +22,14 @@
                     <div>
                         <h3>Who will benefit the most of this session:</h3>
                         <br/>
-                        <ul ng-repeat="who in session.who">
+                        <ul ng-repeat="who in vm.session.who">
                             <li>{{who}}</li>
                         </ul>
                         <br/>
                         <h3>Schedule of the week:</h3>
                         <br/>
                         <!-- <span class="open" ng-show="!session.corporate">Friday evening and Sunday afternoon are optional. A mentor will be around if needed!</span> -->
-                        <ul ng-repeat="when in session.when">
+                        <ul ng-repeat="when in vm.session.when">
                             <li ng-class="when.open? 'open': 'optional';">
                                 <span>{{when.day}} :</span class=""><span>{{when.time}}</span>
                             </li>
@@ -37,14 +37,14 @@
                         <br/>
                         <h3>Takeaways:</h3>
                         <br/>
-                        <ul ng-repeat="takeaway in session.takeAways">
+                        <ul ng-repeat="takeaway in vm.session.takeAways">
                             <li><strong>{{takeaway}}</strong></li>
                         </ul>
                         <br/>
                     </div>
                 </div>
                 <h2>Trainers/Mentors</h2>
-                <div ng-repeat="mentor in session.mentors">
+                <div ng-repeat="mentor in vm.session.mentors">
                     <div class="profile_pic left">
                         <img ng-src="{{mentor.picture}}" width="80" height="80" alt="profile">
                     </div>
@@ -58,13 +58,13 @@
             
             <div class="col_action left animated fadeIn">
                 <a href="#">
-                    <img ng-src="{{session.image}}" width="300" height="120" alt="">
+                    <img ng-src="{{vm.session.image}}" width="300" height="120" alt="">
                 </a>
-                <div class="date">{{session.date}} in <strong>{{session.location.city}}</strong></div>
+                <div class="date">{{vm.session.date}} in <strong>{{vm.session.location.city}}</strong></div>
 
-                <div class="intensity"><strong>{{session.pace}}</strong> -- {{session.paceDescription}}</div>
+                <div class="intensity"><strong>{{vm.session.pace}}</strong> -- {{vm.session.paceDescription}}</div>
 
-                <div class="tags_bloc" ng-repeat="tag in session.tags">
+                <div class="tags_bloc" ng-repeat="tag in vm.session.tags">
                     <div class="tag">
                       <a>{{tag}}</a>
                     </div>
@@ -73,7 +73,7 @@
                 
                 <div class="requirements_list">
                     <h2>Requirements:</h2>
-                    <ul ng-repeat="prerequis in session.prerequis">
+                    <ul ng-repeat="prerequis in vm.session.prerequis">
                         <li>{{prerequis}}</li>
                     </ul>
                 </div>
@@ -81,8 +81,8 @@
                 <div class="CTA_box">
                     <!-- <div class="attendies_number">{{session.numberAttendees}}/<strong>{{session.maxAttendees}}</strong> attendees</div> -->
                     <div class="CTA">
-                        <div class="price left"><span id="amount">{{session.cost}}</span><sup>&euro;/{{session.period}}</sup></div>
-                        <div class="button_red right"><a href="{{session.tito}}">I am in</a></div>
+                        <div class="price left"><span id="amount">{{vm.session.cost}}</span><sup>&euro;/{{vm.session.period}}</sup></div>
+                        <div class="button_red right"><a href="{{vm.session.tito}}">I'm in</a></div>
                         <div class="clear"></div>
                     </div>
                 </div>

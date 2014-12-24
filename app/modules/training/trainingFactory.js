@@ -120,7 +120,7 @@
 		
 	}
 
-	angular.module('philosAngularApp').factory('trainingFactory', ['$http', '$q', '$window', trainingFactory]);
+	angular.module('philos').factory('trainingFactory', ['$http', '$q', '$window', trainingFactory]);
 })();
 
 

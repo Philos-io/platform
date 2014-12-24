@@ -3,5 +3,5 @@
 	/*
 	* Current User
 	*/
-	angular.module('philosAngularApp').constant('CurrentUser', {});
+	angular.module('philos').constant('CurrentUser', {});
 })();
