@@ -22,7 +22,7 @@
 
 <section id="trainings">
     <div id="training_wrapper">
-        <div class="training_list" ng-repeat="training in session.all | limitTo: 3">
+        <div class="training_list" ng-repeat="training in main.session.all | limitTo: 3">
             <div ng-class="training.attendees.length === training.maxAttendees? 'training_element_grey': 'training_element'">
                 <h1><a href="#/one-week-one-project/{{training.url}}">{{training.title}}</a></h1>
                 <span class="date">{{training.date}} in <strong>{{training.location.city}}</strong></span>
