@@ -2,11 +2,11 @@
   'use strict';
 
   function MainController($document, trainingFactory, $window, CurrentUser) {
-    var duration = 500, offset = 30, sessions, self = this;
+    var duration = 500, offset = 30, self = this;
     self.session = {};
 
     trainingFactory.getAll().then(function(trainings){
-      sessions = self.session.all = trainings;
+      self.session.all = trainings;
     });
 
     self.goTo = function(el){
@@ -15,27 +15,10 @@
       $document.scrollToElement(position, offset, duration);
       
     };
-
-    // Managing corporate versus normal trainings
-    self.corporate = false;
-    self.toggle = function(corporate){
-
-      if (self.corporate === corporate) {
-        self.corporate = !corporate;
-        return;
-      }
-
-      self.session.all = [];
-      sessions.filter(function(session){
-        if (session.corporate === corporate) {
-          self.session.all.push(session);
-        }
-      });
-    };
   }
 
   function configuration($routeProvider, $compileProvider){
-    $compileProvider.debugInfoEnabled(false);
+    //$compileProvider.debugInfoEnabled(false);
     $routeProvider
       .when('/', {
         controller: 'MainController',
